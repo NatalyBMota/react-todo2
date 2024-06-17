@@ -21,7 +21,13 @@ function App() {
     <>
       <h1>Todo List</h1>
       <ul>
-        <li>{todoList[0].title}</li>
+        {todoList.map(function(item) {
+          return (
+            <>
+              <li>{item.id}. {item.title}</li>
+            </>
+          );
+        })}
       </ul>
     </>
   )
