@@ -1,5 +1,7 @@
 import './App.css'
 
+const todoList = [];
+
 function App() {
 
   return (
