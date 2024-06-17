@@ -1,6 +1,19 @@
 import './App.css'
 
-const todoList = [];
+const todoList = [
+  {
+    id: 1,
+    title: 'Study React Components',
+  },
+  {
+    id: 2,
+    title: 'Review Array Map Method',
+  },
+  {
+    id: 3,
+    title: 'Complete One More Video-Based Course from Tree House',
+  }
+];
 
 function App() {
 
@@ -8,7 +21,7 @@ function App() {
     <>
       <h1>Todo List</h1>
       <ul>
-        <li></li>
+        <li>{todoList[0].title}</li>
       </ul>
     </>
   )
