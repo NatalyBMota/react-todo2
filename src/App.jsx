@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 
 const todoList = [
   {
@@ -26,7 +26,7 @@ function App() {
         })}
       </ul>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
