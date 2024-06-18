@@ -13,7 +13,7 @@ const todoList = [
     id: 3,
     title: 'Complete One More Video-Based Course from Tree House',
   }
-];
+]
 
 function App() {
 
@@ -22,7 +22,7 @@ function App() {
       <h1>Todo List</h1>
       <ul>
         {todoList.map(function(item) {
-          return <li key={item.id}>{item.title}</li>;
+          return <li key={item.id}>{item.title}</li>
         })}
       </ul>
     </>
