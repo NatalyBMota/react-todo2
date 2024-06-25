@@ -15,8 +15,10 @@ const todoList2 = [
 
 const TodoList = () => {
     return <ul>
-        <li>{todoList2[0].id}</li>
-    </ul>;
+        {todoList2.map(function(item) {
+            return <li key={item.id}>{item.title}</li>
+        })}
+  </ul>;
 };
 
 export default TodoList;
