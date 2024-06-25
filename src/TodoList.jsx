@@ -1,4 +1,4 @@
-const todoList2 = [
+const todoList = [
     {
       id: 1,
       title: 'Study React Components',
@@ -15,7 +15,7 @@ const todoList2 = [
 
 const TodoList = () => {
     return <ul>
-        {todoList2.map(function(item) {
+        {todoList.map(function(item) {
             return <li key={item.id}>{item.title}</li>
         })}
   </ul>;
