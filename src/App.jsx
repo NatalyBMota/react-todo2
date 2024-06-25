@@ -9,6 +9,6 @@ const App = () => {
       <TodoList />
     </>
   );
-}
+};
 
 export default App;
