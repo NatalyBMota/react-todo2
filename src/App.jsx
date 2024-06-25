@@ -25,8 +25,15 @@ const App = () => {
           return <li key={item.id}>{item.title}</li>
         })}
       </ul>
+      <TodoList />
     </>
   );
+}
+
+const TodoList = () => {
+  return <ul>
+    <li>Hello from TodoList</li>
+  </ul>;
 };
 
 export default App;
