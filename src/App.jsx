@@ -14,7 +14,7 @@ const todoList = [
     id: 3,
     title: 'Complete One More Video-Based Course from Tree House',
   }
-]
+];
 
 const App = () => {
 
