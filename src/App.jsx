@@ -15,7 +15,7 @@ const todoList = [
   }
 ]
 
-function App() {
+const App = () => {
 
   return (
     <>
@@ -27,6 +27,6 @@ function App() {
       </ul>
     </>
   );
-}
+};
 
 export default App;
