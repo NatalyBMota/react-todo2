@@ -1,4 +1,4 @@
-const AddTodoForm = () => {
+const AddTodoForm = (props) => {
     const handleAddTodo = (event) => {
         event.preventDefault();
         console.log("Form Submitted!");
@@ -6,11 +6,11 @@ const AddTodoForm = () => {
         let todoInput = document.querySelector("input");
         let todoTitle = todoInput.value;
         //let todoTitle = event.target.value;
-        console.log(form);
-        console.log(todoInput);
-        console.log(event.target.value);
+        //console.log(form);
+        //console.log(todoInput);
         console.log(todoTitle);
         form.reset();
+        props.onAddTodo(todoTitle);
     }
 
     return (
