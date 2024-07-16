@@ -5,15 +5,20 @@ const AddTodoForm = (props) => {
 
     const handleTitleChange = (event) => {
         let todoInput = document.querySelector("input");
-        let newTodoTitle = todoInput.value;
+        console.log("Todo input field:", todoInput);
+        // let newTodoTitle = todoInput.value;
+        let newTodoTitle = event.target.value;
+        console.log("Value of input field:", newTodoTitle)
         setTodoTitle(newTodoTitle);
     };
 
     const handleAddTodo = (event) => {
+        let form = event.target;
         event.preventDefault();
         console.log("Form Submitted!");
-        todoTitle = "";
         props.onAddTodo({id: Date.now(), title: todoTitle});
+        //setTodoTitle("");
+        form.reset();
     };
 
     return (
