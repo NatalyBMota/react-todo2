@@ -4,7 +4,7 @@ import TodoList from './TodoList.jsx';
 import AddTodoForm from './AddTodoForm.jsx';
 
 const App = () => {
-  let [todoList, setTodoList] = useState([{id: 2, title: "cook"}]);
+  let [todoList, setTodoList] = useState([]);
 
   let addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
