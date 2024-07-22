@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import TodoList from './TodoList.jsx';
 import AddTodoForm from './AddTodoForm.jsx';
 
@@ -26,12 +26,12 @@ const App = () => {
   };
 
   return (
-    <>
+    <Fragment>
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo} />
       <p></p>
       <TodoList todoList={todoList} />
-    </>
+    </Fragment>
   );
 };
 
