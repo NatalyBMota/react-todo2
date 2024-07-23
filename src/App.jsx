@@ -4,8 +4,12 @@ import TodoList from './TodoList.jsx';
 import AddTodoForm from './AddTodoForm.jsx';
 
 const useSemiPersistentState = () => {
-
-  let [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) || []);
+  // Previously using short-circuit evaluation
+  // let [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) || []);
+  // Using nullish coalescing operator instead.
+  // Both work, but I just learned about the latter., so
+  // I am using it.
+  let [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) ?? []);
 
   useEffect(() => {
     console.log("useEffect ran");
