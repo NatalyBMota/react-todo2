@@ -10,14 +10,9 @@ const AddTodoForm = ({onAddTodo}) => {
     };
 
     const handleAddTodo = (event) => {
-        // const form = event.target;
         event.preventDefault();
         onAddTodo({id: Date.now(), title: todoTitle});
         setTodoTitle("");
-        const todoInput = document.querySelector("input");
-        todoInput.value = "";
-        // console.log("Todo input field's value:", todoInput.value);
-        // console.log("todoTitle state;", todoTitle);
     };
 
     return (
