@@ -22,3 +22,7 @@ Currently, two official plugins are available:
   let [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) || []);
 - I am now using the nullish coalescing operator instead. Both work, but I just learned about the latter, so I decided to use it. The new code looks like this:
   const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) ?? []);
+- In Roy Mosby's comments in my pull request for lesson 1.4, he mentioned that "React needs to be able to track all of the components that it renders and uses key={todo.id} to do so." He also mentioned that "React will be giving" me "a warning about" the "list items;" which are created through the TodoListItem function, in the TodoListItem.jsx file; "not having an id." That is because, my code for that function was previously returning the following line of code:
+<li>{todo}</li>
+- I believe that I fixed this issue by having the TodoListItem function return the following line of code instead:
+<li key={todo.id}>{todo}</li>
