@@ -17,3 +17,8 @@ Currently, two official plugins are available:
   todoInput.value = "";
 - That code would go inside of the declaration for the handleAddTodo function, inside of the AddToDoForm.jsx, if we needed to use Vanilla JavaScript. Yet, as Roy Mosby mentioned, "useState provides both a state value and a function to update that state value." So, this code is unecessary and has been replaced with a call to that "function to update that state value." So, now, we are using the following code inside of the eclaration for the handleAddTodo function, instead:
   setTodoTitle("");
+
+- At the top of the useSemiPersistentState function declaration on App.jsx, I was previously using short-circuit evaluation, through the following line of code:
+  let [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) || []);
+- I am now using the nullish coalescing operator instead. Both work, but I just learned about the latter, so I decided to use it. The new code looks like this:
+  const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) ?? []);
