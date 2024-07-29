@@ -7,7 +7,6 @@ const useSemiPersistentState = () => {
   const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) ?? []);
 
   useEffect(() => {
-    console.log("useEffect ran");
     localStorage.setItem('savedTodoList', JSON.stringify(todoList))
   }, [todoList]);
 
@@ -15,8 +14,6 @@ const useSemiPersistentState = () => {
 };
 
 const App = () => {
-  console.log("App mounted");
-
   const [todoList , setTodoList] = useSemiPersistentState();
 
   const addTodo = (newTodo) => {
