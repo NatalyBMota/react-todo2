@@ -9,7 +9,7 @@ const useSemiPersistentState = () => {
   // Using nullish coalescing operator instead.
   // Both work, but I just learned about the latter., so
   // I am using it.
-  let [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) ?? []);
+  const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) ?? []);
 
   useEffect(() => {
     console.log("useEffect ran");
@@ -21,11 +21,10 @@ const useSemiPersistentState = () => {
 
 const App = () => {
   console.log("App mounted");
-  //let [todoList, setTodoList] = useState([]);
 
   const [todoList , setTodoList] = useSemiPersistentState();
 
-  let addTodo = (newTodo) => {
+  const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
   };
 
