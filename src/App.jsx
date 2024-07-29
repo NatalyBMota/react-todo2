@@ -13,6 +13,10 @@ const useSemiPersistentState = () => {
   return [todoList, setTodoList];
 };
 
+// const removeTodo = (id) => {
+
+// };
+
 const App = () => {
   const [todoList , setTodoList] = useSemiPersistentState();
 
@@ -20,6 +24,7 @@ const App = () => {
     setTodoList([...todoList, newTodo]);
   };
 
+  console.log("todoList: ", todoList);
   return (
     <>
       <h1>Todo List</h1>

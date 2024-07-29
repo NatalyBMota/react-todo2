@@ -1,4 +1,10 @@
+import {useRef, useEffect} from 'react';
+
 const InputWithLabel = (props) => {
+    const inputRef = useRef();
+
+    useEffect(() => {}, []);
+
     return (
         <>
             <label htmlFor="todoTitle">{props.children}</label>&nbsp;&nbsp;
