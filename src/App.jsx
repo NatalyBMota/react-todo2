@@ -18,25 +18,19 @@ const App = () => {
 
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
-    console.log("Todo list inside of addTodo", todoList);
   };
 
-  console.log("Todo list outside of addTodo", todoList);
   const removeTodo = (id) => {
-  // //   setTodoList();
-    // for (let i=0; i<todoList.length; i++) {
-    //     console.log(todoList[i]);
-    // }   
+    const filteredTodoList = todoList.filter((item) => item.id !== id);
+    setTodoList(filteredTodoList);
   };
-
-  removeTodo(30);
 
   console.log("todoList: ", todoList);
   return (
     <>
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo} />
-      <TodoList todoList={todoList} />
+      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
     </>
   );
 };

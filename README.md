@@ -26,3 +26,20 @@ Currently, two official plugins are available:
 <li>{todo}</li>
 - I believe that I fixed this issue by having the TodoListItem function return the following line of code instead:
 <li key={todo.id}>{todo}</li>
+
+- Removing an item from todoList which has a given id; as required to do in lesson 1.6's assignment; could involve using the filter method of the array.
+- A good tutorial that explains how to use that particular array method is available at FreeCodeCamp at:
+  https://www.freecodecamp.org/news/javascript-filter-method/
+- It explains that "the filter method in JavaScript is designed as a higher-order function that iterates over each element of an array, allowing developers to apply a specific condition to filter out elements." It also states that "the filter method doesn't modify the original array, but instead creates and returns a new array containing only the elements that meet the specified condition."
+- It gives an example in which, "you have an array of numbers and you want to filter out only the even numbers." Then, it shows you that you can achieve that with the following code:
+  const numbers = [1, 2, 3, 4, 5];
+  const evenNumbers = numbers.filter(num => num % 2 === 0);
+  // evenNumbers: [2, 4]
+- It also gives another, even more relevant example, in which "you have an array of objects representing products, and you want to filter out products with prices greater than $50." Then, it provides the code with which you can achieve that. It is as follows:
+  const products = [
+  { id: 1, name: 'Product 1', price: 40 },
+  { id: 2, name: 'Product 2', price: 60 },
+  { id: 3, name: 'Product 3', price: 30 }
+  ];
+  const expensiveProducts = products.filter(product => product.price > 50);
+  // expensiveProducts: [{ id: 2, name: 'Product 2', price: 60 }]
