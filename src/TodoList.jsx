@@ -1,6 +1,6 @@
 import TodoListItem from "./TodoListItem.jsx";
 
-const TodoList = ({todoList}) => {
+const TodoList = ({todoList, onRemoveTodo}) => {
   return (
       <ul>
           {todoList.map(function(item) {
