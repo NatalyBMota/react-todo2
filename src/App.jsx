@@ -25,7 +25,6 @@ const App = () => {
     setTodoList(filteredTodoList);
   };
 
-  console.log("todoList: ", todoList);
   return (
     <>
       <h1>Todo List</h1>
