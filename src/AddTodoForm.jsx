@@ -4,8 +4,7 @@ const AddTodoForm = ({onAddTodo}) => {
     const [todoTitle, setTodoTitle] = useState("");
 
     const handleTitleChange = (event) => {
-        const todoInput = document.querySelector("input");
-        const newTodoTitle = todoInput.value;
+        const newTodoTitle = event.target.value;
         setTodoTitle(newTodoTitle);
     };
 
