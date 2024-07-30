@@ -1,6 +1,6 @@
-const TodoListItem = ({todo}) => {
+const TodoListItem = ({id, todo}) => {
     return (
-        <li key={todo.id}>{todo}</li>
+        <li key={id}>{todo}</li>
     );
 }
 
