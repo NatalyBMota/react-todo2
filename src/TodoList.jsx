@@ -7,6 +7,7 @@ const TodoList = ({todoList, onRemoveTodo}) => {
               return (
                 <TodoListItem 
                   key={item.id} 
+                  id={item.id}
                   todo={item.title} 
                   onRemoveTodo={onRemoveTodo} 
                 />
