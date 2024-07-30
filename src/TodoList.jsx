@@ -6,7 +6,7 @@ const TodoList = ({todoList}) => {
       <ul>
           {todoList.map(function(item) {
               console.log("todo list item.id: ", item.id);
-              console.log("todo list item.title: ", item.id);
+              console.log("todo list item.title: ", item.title);
               return (
                 <TodoListItem key={item.id} todo={item.title}/>
               );

@@ -13,16 +13,23 @@ const useSemiPersistentState = () => {
   return [todoList, setTodoList];
 };
 
-// const removeTodo = (id) => {
-
-// };
-
 const App = () => {
-  const [todoList , setTodoList] = useSemiPersistentState();
+  const [todoList, setTodoList] = useSemiPersistentState();
 
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
+    console.log("Todo list inside of addTodo", todoList);
   };
+
+  console.log("Todo list outside of addTodo", todoList);
+  const removeTodo = (id) => {
+  // //   setTodoList();
+    // for (let i=0; i<todoList.length; i++) {
+    //     console.log(todoList[i]);
+    // }   
+  };
+
+  removeTodo(30);
 
   console.log("todoList: ", todoList);
   return (
