@@ -3,19 +3,12 @@ import { useState, useEffect} from 'react';
 import TodoList from './TodoList.jsx';
 import AddTodoForm from './AddTodoForm.jsx';
 
-// Might have completed all of the requirements for the assignment
-// for lesson 1.7, but need to double-check to see if everything is
-// working as it should.
-
-const App = () => {
-
-  // const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) ?? []);
-  
+const App = () => {  
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    let myNewPromise = new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => {
       setTimeout(() => {
         let existingTodo = JSON.parse(localStorage.getItem('savedTodoList'));
         const object = {
@@ -37,7 +30,6 @@ const App = () => {
     if (!isLoading) {
       localStorage.setItem('savedTodoList', JSON.stringify(todoList));
     }
-    // localStorage.setItem('savedTodoList', JSON.stringify(todoList))
   }, [todoList, isLoading]);
 
   const addTodo = (newTodo) => {
@@ -54,7 +46,6 @@ const App = () => {
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo} />
       {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} onRemoveTodo={removeTodo} />)}
-
     </>
   );
 };
