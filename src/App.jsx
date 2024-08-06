@@ -10,22 +10,25 @@ import AddTodoForm from './AddTodoForm.jsx';
 const App = () => {
 
   // const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) ?? []);
+  
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let myNewPromise = new Promise((resolve, reject) => {
       setTimeout(() => {
-        //resolve({data: {todoList: todoList}});
-        resolve({data: {todoList: JSON.parse(localStorage.getItem('savedTodoList'))}})
+        let existingTodo = JSON.parse(localStorage.getItem('savedTodoList'));
+        const object = {
+          data: {
+            todoList: existingTodo,
+          },
+        };
+        resolve(object);
       }, 2000);
     })
     .then(result => {
-      //setTodoList([...todoList, result.data.todoList]);
-      // result = {data: {todoList: JSON.parse(localStorage.getItem('savedTodoList'))}}
-      // result.data.todoList
-      setTodoList(result.data.todoList);
-      //console.log(result.data.todoList);
+      let retrievedTodoList = result.data.todoList;
+      setTodoList(retrievedTodoList);
       setIsLoading(false);
     });
   }, []);
@@ -35,7 +38,7 @@ const App = () => {
       localStorage.setItem('savedTodoList', JSON.stringify(todoList));
     }
     // localStorage.setItem('savedTodoList', JSON.stringify(todoList))
-  }, [todoList]);
+  }, [todoList, isLoading]);
 
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
