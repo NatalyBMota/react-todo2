@@ -43,3 +43,6 @@ Currently, two official plugins are available:
   ];
   const expensiveProducts = products.filter(product => product.price > 50);
   // expensiveProducts: [{ id: 2, name: 'Product 2', price: 60 }]
+
+  - Priorly, I was using the following line of code at the top of the App component function, in App.jsx:
+    const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) ?? []);
