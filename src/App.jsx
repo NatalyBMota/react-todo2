@@ -10,7 +10,7 @@ const App = () => {
   useEffect(() => {
     new Promise((resolve, reject) => {
       setTimeout(() => {
-        let existingTodo = JSON.parse(localStorage.getItem('savedTodoList'));
+        let existingTodo = JSON.parse(localStorage.getItem('savedTodoList') || '[]');
         const object = {
           data: {
             todoList: existingTodo,
