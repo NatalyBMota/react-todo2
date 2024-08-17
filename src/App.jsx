@@ -9,7 +9,7 @@ const App = () => {
 
   const fetchData = async () => {
     const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
-    
+
     const options = {
       method: 'GET',
       headers: `{
@@ -19,6 +19,11 @@ const App = () => {
     
     try {
       const response = await fetch(url, options);
+      if (!response.ok) {
+        // let errorResponse = `${response.status}`;
+        // throw new Error(errorResponse);
+        throw new Error(`${response.status}`);
+      }
     } catch {
 
     }
