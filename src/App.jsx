@@ -24,6 +24,7 @@ const App = () => {
         // throw new Error(errorResponse);
         throw new Error(`${response.status}`);
       }
+      let data = response.json();
     } catch {
 
     }
