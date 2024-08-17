@@ -38,6 +38,7 @@ const App = () => {
       }
       let data = await response.json();
       console.log(`Data variable: ${data}`);
+      console.log(data);
     } catch {
 
     }
