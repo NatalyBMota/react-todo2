@@ -8,7 +8,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-
+    const options = {};
   }
 
   useEffect(() => {
