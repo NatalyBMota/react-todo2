@@ -37,17 +37,13 @@ const App = () => {
         // throw new Error(`${response.status}`);
       }
       let data = await response.json();
-      console.log(data);
       let todos = data.records.map(function(item) {
         const newTodo =  {
           id: item.id,
           title: item.fields.title,
         }
-        console.log(newTodo);
         return newTodo;
       });
-
-      console.log(todos);
     } catch {
 
     }
