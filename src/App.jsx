@@ -20,11 +20,12 @@ const App = () => {
     try {
       const response = await fetch(url, options);
       if (!response.ok) {
-        // let errorResponse = `${response.status}`;
-        // throw new Error(errorResponse);
-        throw new Error(`${response.status}`);
+        let errorResponse = `${response.status}`;
+        throw new Error(errorResponse);
+        // throw new Error(`${response.status}`);
       }
       let data = response.json();
+      console.log(`Data variable: ${data}`);
     } catch {
 
     }
@@ -33,22 +34,6 @@ const App = () => {
   }
 
   useEffect(() => {
-    // new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     let existingTodo = JSON.parse(localStorage.getItem('savedTodoList') || '[]');
-    //     const object = {
-    //       data: {
-    //         todoList: existingTodo,
-    //       },
-    //     };
-    //     resolve(object);
-    //   }, 2000);
-    // })
-    // .then(result => {
-    //   let retrievedTodoList = result.data.todoList;
-    //   setTodoList(retrievedTodoList);
-    //   setIsLoading(false);
-    // });
     fetchData();
   }, []);
 
