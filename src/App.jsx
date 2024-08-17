@@ -10,7 +10,7 @@ const App = () => {
   const fetchData = async () => {
     console.log(`import.meta.env.VITE_TABLE_NAME: ${import.meta.env.VITE_TABLE_NAME}`);
     console.log(`import.meta.env.VITE_AIRTABLE_BASE_ID: ${import.meta.env.VITE_AIRTABLE_BASE_ID}`)
-    console.log(`import.meta.env.VITE_TABLE_NAME: ${import.meta.env.VITE_TABLE_NAME}`);
+    console.log(`import.meta.env.VITE_AIRTABLE_API_TOKEN: ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`);
     //const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
     const url = "https://api.airtable.com/v0/app2PWdIhOrGFyQZj/Default";
 
@@ -44,6 +44,10 @@ const App = () => {
         }
         return newTodo;
       });
+      setTodoList(todos);
+      console.log(todos);
+      console.log(todoList);
+      setIsLoading(false);
     } catch {
 
     }
