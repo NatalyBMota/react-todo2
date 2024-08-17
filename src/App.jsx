@@ -39,14 +39,15 @@ const App = () => {
       let data = await response.json();
       console.log(data);
       let todos = data.records.map(function(item) {
-        console.log(item.fields.title);
         const newTodo =  {
           id: item.id,
           title: item.fields.title,
         }
         console.log(newTodo);
-        return newTodo
+        return newTodo;
       });
+
+      console.log(todos);
     } catch {
 
     }
