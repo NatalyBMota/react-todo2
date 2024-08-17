@@ -48,11 +48,9 @@ const App = () => {
       console.log(todos);
       console.log(todoList);
       setIsLoading(false);
-    } catch {
-
+    } catch (error) {
+      console.log(error.message);
     }
-    
-
   }
 
   useEffect(() => {
