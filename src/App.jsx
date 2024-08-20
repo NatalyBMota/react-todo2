@@ -43,6 +43,7 @@ const App = () => {
       setIsLoading(false);
     } catch (error) {
       console.log(error.message);
+      return null;
     }
   }
 
