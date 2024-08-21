@@ -4,6 +4,6 @@ import eslint from 'vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/react-todo",
   plugins: [react(), eslint()],
+  base: "/react-todo/",
 });
