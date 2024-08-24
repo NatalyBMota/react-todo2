@@ -23,7 +23,6 @@ const App = () => {
       if (!response.ok) {
         let errorResponse = `${response.status}`;
         throw new Error(errorResponse);
-        // throw new Error(`${response.status}`);
       }
       let data = await response.json();
       let todos = data.records.map(function(item) {
@@ -31,18 +30,11 @@ const App = () => {
           id: item.id,
           title: item.fields.title,
         }
-        console.log(`newTodo: ${newTodo}`);
-        console.log(newTodo);
         return newTodo;
       });
       setTodoList(todos);
-      console.log(`todos: ${todos}`);
-      console.log(todos);
-      console.log(`todoList: ${todoList}`);
-      console.log(todoList);
       setIsLoading(false);
     } catch (error) {
-      console.log(error.message);
       return null;
     }
   }
