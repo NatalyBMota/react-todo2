@@ -52,7 +52,7 @@ const App = () => {
 
   const addTodo = async (newTodo) => {
     const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
-    console.log(newTodo);
+  
     const options = {
       method: 'POST',
       headers: {
@@ -68,7 +68,6 @@ const App = () => {
 
     const response = await fetch(url, options);
     const json = await response.json();
-    console.log(json);
     
     setTodoList([...todoList, {
       id: json.id, 
