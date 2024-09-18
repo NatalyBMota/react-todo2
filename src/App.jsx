@@ -111,7 +111,7 @@ const App = () => {
           <>
             <nav>
               <Link to="/new" alt="Click here to create a new todo list.">New Todo List</Link>
-              <a href="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</a>
+              <Link to="https://icons8.com/icons/set/favicon" target="_blank">Fav Icons</Link>
             </nav>
             <main>
               <section>
