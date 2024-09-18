@@ -1,0 +1,8 @@
+.addButtonImg {
+    width: 1.5em;
+}
+
+.addTodoForm {
+    display: flex;
+    align-items: center;
+}

@@ -1,4 +1,5 @@
 import {useRef, useEffect} from 'react';
+import styles from './InputWithLabel.module.css';
 
 const InputWithLabel = (props) => {
     const inputRef = useRef();
@@ -17,6 +18,7 @@ const InputWithLabel = (props) => {
                 id='todoTitle' 
                 value={props.todoTitle} 
                 onChange={props.handleTitleChange} 
+                className={styles.inputField}
             />
         </>
     );

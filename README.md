@@ -48,3 +48,6 @@ Currently, two official plugins are available:
 
   - Priorly, I was using the following line of code at the top of the App component function, in App.jsx:
     const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('savedTodoList')) ?? [])
+
+- A clue about how to delete a record from a table in AirTable, using the AirTable API in conjunction with the fetch method, can be found in the AirTable API's documentation here:
+  https://airtable.com/app2PWdIhOrGFyQZj/api/docs#curl/table:default:delete

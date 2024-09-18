@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import InputWithLabel from './InputWithLabel';
+import styles from './AddTodoForm.module.css';
+import addSign from './assets/add-sign.svg';
+
 
 const AddTodoForm = ({onAddTodo}) => {
     const [todoTitle, setTodoTitle] = useState("");
@@ -16,12 +19,12 @@ const AddTodoForm = ({onAddTodo}) => {
     };
 
     return (
-        <form onSubmit={handleAddTodo}>
+        <form onSubmit={handleAddTodo} className={styles.addTodoForm}>
             <InputWithLabel todoTitle={todoTitle} handleTitleChange={handleTitleChange}>
             Title
             </InputWithLabel>
             &nbsp;&nbsp;
-            <button type="submit">Add</button>
+            <button type="submit"><img src={addSign} alt="Add item to to-do list." className={styles.addButtonImg} /></button>
         </form>
     );
 };
