@@ -9,9 +9,13 @@
     }
 }
 
+/* The iPhone 12/13 Pro Max iOS 14.6 Has a View Port Width of 428px in Portrait Mode */
 @media only screen and (min-width: 416px) and (max-width: 639px) {
     h1 {
         font-size: 1em;
+    }
+    nav {
+        font-size: .8em;
     }
 }
 
