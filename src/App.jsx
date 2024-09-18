@@ -111,6 +111,7 @@ const App = () => {
           <>
             <nav>
               <Link to="/new" alt="Click here to create a new todo list.">New Todo List</Link>
+              <a href="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</a>
             </nav>
             <main>
               <section>
@@ -119,7 +120,7 @@ const App = () => {
                 {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} onRemoveTodo={removeTodo} />)}
               </section>
               <section>
-                <img src={checkListImg} alt="Checklist." className={styles.checkListImg} />              
+                <img src={checkListImg} alt="Checklist." className={styles.checkListImg} />             
               </section>
             </main>
           </>
