@@ -1,0 +1,51 @@
+/* Galaxy S10/S10+ Android 11 in Portrait View*/
+@media only screen and (max-width: 360px) {
+    .list {
+        padding-right: 0.9em;
+        padding-left: 0.9em;
+    }
+}
+
+/* iPhone 11 Pro iOS 14.6 in Portrait View */
+@media only screen and (max-width: 375px) {
+    .list {
+        padding-right: 0.7em;
+        padding-left: 0.7em;
+    }
+}
+
+/* iPhone 11 Pro Max iOS 14.6 in Portrait View*/
+@media only screen and (max-width: 415px) {
+    .list {
+        padding-right: 0.4em;
+        padding-left: 0.4em;
+    }
+}
+
+@media only screen and (min-width: 416px) and (max-width: 639px) {
+    .list {
+        padding-right: 0.9em;
+        padding-left: 0.8em;
+    }   
+}
+
+@media only screen and (min-width: 640px) and (max-width: 767px) {
+    .list {
+        padding-right: 0.8em;
+        padding-left: 0.7em;
+    }    
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .list {
+        padding-right: 0.7em;
+        padding-left: 0.6em;
+    }  
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1279px) {
+    .list {
+        padding-right: 0.6em;
+        padding-left: 0.5em;
+    }
+}

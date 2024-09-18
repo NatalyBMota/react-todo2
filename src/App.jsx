@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import TodoList from './TodoList.jsx';
 import AddTodoForm from './AddTodoForm.jsx';
-import styles from './App.module.css';
+import styles from './styles/App.module.css';
 import checkListImg from './assets/checklist.svg';
 
 const App = () => {  

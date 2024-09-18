@@ -1,0 +1,32 @@
+.addButton {
+    padding: 0.6em 1.2em;
+}
+
+.addButtonImg {
+    width: 1.5em;
+}
+
+.addTodoForm {
+    display: flex;
+    align-items: center;
+}
+
+/* Galaxy S10/S10+ Android 11 in Portrait View*/
+@media only screen and (max-width: 360px) {
+    .labelForInput {
+        font-size: .6em;
+    }
+}
+
+/* iPhone 11 Pro Max iOS 14.6 */
+@media only screen and (max-width: 415px) {
+    .labelForInput {
+        font-size: .8em;
+    }
+    .addButton {
+        padding: 0.4em 1em;
+    }
+    .addButtonImg {
+        width: 1.2em;
+    }
+}

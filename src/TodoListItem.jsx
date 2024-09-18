@@ -1,9 +1,9 @@
-import styles from './TodoListItem.module.css';
+import styles from './styles/TodoListItem.module.css';
 import trashCan from './assets/trash-can.svg';
 
 const TodoListItem = ({id, todo, onRemoveTodo}) => {
     return (
-        <li key={id} className={styles.ListItem}>
+        <li key={id} className={styles.listItem}>
             {todo}
             &nbsp;&nbsp;
             <button type="button" onClick={() => {

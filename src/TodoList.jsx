@@ -1,8 +1,9 @@
 import TodoListItem from "./TodoListItem.jsx";
+import styles from './styles/TodoList.module.css';
 
 const TodoList = ({todoList, onRemoveTodo}) => {
   return (
-      <ul>
+      <ul className={styles.list}>
           {todoList.map(function(item) {
               return (
                 <TodoListItem 

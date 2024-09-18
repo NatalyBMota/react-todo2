@@ -1,0 +1,77 @@
+/* iPhone 11 Pro Max iOS 14.6 */
+@media only screen and (max-width: 415px) {
+    h1 {
+        font-size: .9em;
+    }
+    /* The nav contains the navigation button */
+    nav {
+        font-size: .7em;
+    }
+}
+
+@media only screen and (min-width: 416px) and (max-width: 639px) {
+    h1 {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 767px) {
+    h1 {
+        font-size: 1.2em;
+    }
+    /* The nav contains the navigation button */
+    nav {
+        font-size: .4em;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    h1 {
+        font-size: 1.2em;
+    }
+    /* The nav contains the navigation button */
+    nav {
+        font-size: .7em;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1279px) {
+    h1 {
+        font-size: 1.3em;
+    }
+    /* The nav contains the navigation button */
+    nav {
+        font-size: .8em;
+    }
+    
+}
+
+@media only screen and (max-width: 1279px) {
+    .checkListImg {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    .checkListImg {
+        display: inline-flex;
+        width: 10em;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+    h1 {
+        font-size: 1.6em;
+    }
+    /* The nav contains the navigation button */
+    nav {
+        font-size: 1em;
+    }
+    .checkListImg {
+        display: inline-flex;
+        width: 11em;
+    }
+}
