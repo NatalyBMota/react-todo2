@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import InputWithLabel from './InputWithLabel';
-import styles from './styles/AddTodoForm.module.css';
-import addSign from './assets/add-sign.svg';
-
+import styles from './AddTodoForm.module.css';
+import addSign from '../assets/add-sign.svg';
 
 const AddTodoForm = ({onAddTodo}) => {
     const [todoTitle, setTodoTitle] = useState("");
@@ -26,6 +26,10 @@ const AddTodoForm = ({onAddTodo}) => {
             <button type="submit" className={styles.addButton}><img src={addSign} alt="Add item to to-do list." className={styles.addButtonImg} /></button>
         </form>
     );
+};
+
+AddTodoForm.propTypes = {
+    onAddTodo: PropTypes.func
 };
 
 export default AddTodoForm;

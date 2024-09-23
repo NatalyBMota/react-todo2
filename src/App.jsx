@@ -2,8 +2,8 @@ import './App.css';
 import { useState, useEffect} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import TodoList from './TodoList.jsx';
-import AddTodoForm from './AddTodoForm.jsx';
+import TodoList from './components/TodoList.jsx';
+import AddTodoForm from './components/AddTodoForm.jsx';
 import styles from './styles/App.module.css';
 import checkListImg from './assets/checklist.svg';
 

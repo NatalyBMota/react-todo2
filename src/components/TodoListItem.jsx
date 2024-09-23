@@ -1,5 +1,6 @@
-import styles from './styles/TodoListItem.module.css';
-import trashCan from './assets/trash-can.svg';
+import PropTypes from 'prop-types';
+import styles from './TodoListItem.module.css';
+import trashCan from '../assets/trash-can.svg';
 
 const TodoListItem = ({id, todo, onRemoveTodo}) => {
     return (
@@ -12,5 +13,11 @@ const TodoListItem = ({id, todo, onRemoveTodo}) => {
         </li>
     );
 }
+
+TodoListItem.propTypes = {
+    id: PropTypes.string,
+    todo: PropTypes.string,
+    onRemoveTodo: PropTypes.func
+};
 
 export default TodoListItem;
