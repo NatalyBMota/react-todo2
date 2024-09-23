@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import TodoList from './TodoList.jsx';
 import AddTodoForm from './AddTodoForm.jsx';
 import styles from './TodoContainer.module.css';
@@ -23,6 +24,13 @@ const TodoContainer = ({ addTodo, isLoading, todoList, removeTodo }) => {
             </main>
           </>
     );
+};
+
+TodoContainer.propTypes = {
+  addTodo: PropTypes.func,
+  isLoading: PropTypes.bool,
+  todoList: PropTypes.array,
+  removeTodo: PropTypes.func,
 };
 
 export default TodoContainer;
