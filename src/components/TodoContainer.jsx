@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import TodoList from './components/TodoList.jsx';
-import AddTodoForm from './components/AddTodoForm.jsx';
-import styles from './styles/App.module.css';
-import checkListImg from './assets/checklist.svg';
+import TodoList from './TodoList.jsx';
+import AddTodoForm from './AddTodoForm.jsx';
+import styles from './TodoContainer.module.css';
+import checkListImg from '../assets/checklist.svg';
 
 const TodoContainer = ({ addTodo, isLoading, todoList, removeTodo }) => {
     return (
