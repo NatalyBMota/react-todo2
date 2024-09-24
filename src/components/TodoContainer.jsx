@@ -27,10 +27,10 @@ const TodoContainer = ({ addTodo, isLoading, todoList, removeTodo }) => {
 };
 
 TodoContainer.propTypes = {
-  addTodo: PropTypes.func,
-  isLoading: PropTypes.bool,
-  todoList: PropTypes.array,
-  removeTodo: PropTypes.func,
+  addTodo: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  todoList: PropTypes.array.isRequired,
+  removeTodo: PropTypes.func.isRequired,
 };
 
 export default TodoContainer;

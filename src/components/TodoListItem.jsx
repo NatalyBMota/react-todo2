@@ -15,9 +15,9 @@ const TodoListItem = ({id, todo, onRemoveTodo}) => {
 }
 
 TodoListItem.propTypes = {
-    id: PropTypes.string,
-    todo: PropTypes.string,
-    onRemoveTodo: PropTypes.func,
+    id: PropTypes.string.isRequired,
+    todo: PropTypes.string.isRequired,
+    onRemoveTodo: PropTypes.func.isRequired,
 };
 
 export default TodoListItem;
