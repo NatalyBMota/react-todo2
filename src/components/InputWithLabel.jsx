@@ -1,4 +1,5 @@
-import {useRef, useEffect} from 'react';
+import { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styles from './InputWithLabel.module.css';
 
 const InputWithLabel = (props) => {
@@ -22,6 +23,11 @@ const InputWithLabel = (props) => {
             />
         </>
     );
+};
+
+InputWithLabel.propTypes = {
+    todoTitle: PropTypes.string.isRequired,
+    handleTitleChange: PropTypes.func.isRequired,
 };
 
 export default InputWithLabel;

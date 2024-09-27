@@ -1,0 +1,78 @@
+.addButton {
+    padding: 0.6em 1.2em;
+}
+
+.addButtonImg {
+    width: 1.5em;
+}
+
+.addTodoForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Galaxy S10/S10+ Android 11 in Portrait View*/
+@media only screen and (max-width: 360px) {
+    .labelForInput {
+        font-size: .6em;
+    }
+    .addButton {
+        padding: 0.2em .7em;
+    }
+    .addButtonImg {
+        width: 1.1em;
+    }
+}
+
+/* Galaxy S20+ Android 11 has a View Port Width of 384px in Portrait Mode */
+@media only screen and (min-width: 361px) and (max-width: 384px) {
+    .labelForInput {
+        font-size: .7em;
+    }
+    .addButton {
+        padding: 0.3em .7em;
+    }
+    .addButtonImg {
+        width: 1em;
+    }
+}
+
+
+/* iPhone 11 Pro Max iOS 14.6 Has a View Port Width of 415px in Portrait Mode */
+@media only screen and (min-width: 385px) and (max-width: 415px) {
+    .labelForInput {
+        font-size: .8em;
+    }
+    .addButton {
+        padding: 0.4em 1em;
+    }
+    .addButtonImg {
+        width: 1.2em;
+    }
+}
+
+/* The iPhone 12/13 Pro Max iOS 14.6 Has a View Port Width of 428px in Portrait Mode */
+@media only screen and (min-width: 416px) and (max-width: 428px) {
+    .labelForInput {
+        font-size: .7em;
+    }
+    .addButton {
+        padding: 0.1em .6em;
+    }
+    .addButtonImg {
+        width: 1.1em;
+    }
+}
+
+@media only screen and (min-width: 429px) and (max-width: 579px) {
+    .labelForInput {
+        font-size: .8em;
+    }
+    .addButton {
+        padding: 0.2em .7em;
+    }
+    .addButtonImg {
+        width: 1.2em;
+    }
+}

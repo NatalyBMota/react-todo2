@@ -1,0 +1,33 @@
+.listItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #2f3e46;
+    margin-bottom: .5rem;
+    border-bottom: 2px dotted green;
+    padding: 0 0em;
+}
+
+.trashCanIcon {
+    height: 1.5em;
+}
+
+.removeButton {
+    margin-bottom: .7em;
+    padding: 0.6em 1.2em;
+}
+
+/* iPhone 11 Pro Max iOS 14.6 */
+@media only screen and (max-width: 415px) {
+    .listItem {
+        font-size: .7em;
+        padding: 0 1em;
+    }
+}
+
+/* The iPhone 12/13 Pro Max iOS 14.6 Has a View Port Width of 428px in Portrait Mode */
+@media only screen and (min-width: 416px) and (max-width: 428px) {
+    .listItem {
+        padding: 0 1em;
+    }
+}

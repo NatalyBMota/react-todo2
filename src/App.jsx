@@ -1,11 +1,7 @@
 import './App.css';
 import { useState, useEffect} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Link } from "react-router-dom";
-import TodoList from './TodoList.jsx';
-import AddTodoForm from './AddTodoForm.jsx';
-import styles from './App.module.css';
-import checkListImg from './assets/checklist.svg';
+import TodoContainer from './components/TodoContainer.jsx';
 
 const App = () => {  
   const [todoList, setTodoList] = useState([]);
@@ -108,22 +104,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" exact element={
-          <>
-            <nav>
-              <Link to="/new" alt="Click here to create a new todo list.">New Todo List</Link>
-              <Link to="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</Link>
-            </nav>
-            <main>
-              <section>
-                <h1>Todo List</h1>
-                <AddTodoForm onAddTodo={addTodo} />
-                {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} onRemoveTodo={removeTodo} />)}
-              </section>
-              <section>
-                <img src={checkListImg} alt="Checklist." className={styles.checkListImg} />             
-              </section>
-            </main>
-          </>
+          <TodoContainer addTodo={addTodo} isLoading={isLoading} todoList={todoList} removeTodo={removeTodo} />
         }>
         </Route>
         <Route path="/new" exact element={
