@@ -28,6 +28,7 @@ const TodoContainer = () => {
         throw new Error(errorResponse);
       }
       let data = await response.json();
+
       let todos = data.records.map(function(item) {
         const newTodo =  {
           id: item.id,
@@ -36,16 +37,16 @@ const TodoContainer = () => {
         return newTodo;
       });
 
-      let todosTitlesArray = data.records.map(function(item) {
+      console.log("Todos", todos);
+
+      let titlesOfTodosArray = data.records.map(function(item) {
         const todosTitles =  item.fields.title
         return todosTitles;
       });
-      console.log("Todos", todos);
-      // todos = todos.sort();
-      // console.log("Sorted Todos", todos);
 
-      todosTitlesArray = todosTitlesArray.sort();
-      console.log(todosTitlesArray);
+      titlesOfTodosArray = titlesOfTodosArray.sort();
+
+      console.log(titlesOfTodosArray);
       
       setTodoList(todos);
       setIsLoading(false);
