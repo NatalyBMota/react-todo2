@@ -10,6 +10,8 @@ const App = () => {
   const fetchData = async () => {
     const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?view=Grid%20view&sort%5B0%5D%5Bfield%5D=title&sort%5B0%5D%5Bdirection%5D=asc`;
 
+    console.log("Test");
+
     const options = {
       method: 'GET',
       headers: {
