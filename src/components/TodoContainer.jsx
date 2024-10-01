@@ -11,7 +11,11 @@ const TodoContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?view=Grid%20view&sort%5B0%5D%5Bfield%5D=title&sort%5B0%5D%5Bdirection%5D=asc`;
+    const queryParam1 = "view=Grid%20view";
+    const queryParam2 = "sort%5B0%5D%5Bfield%5D=title";
+    const queryParam3 = "sort%5B0%5D%5Bdirection%5D=asc";
+
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?${queryParam1}&${queryParam2}&${queryParam3}`;
     
     const options = {
       method: 'GET',
@@ -38,6 +42,7 @@ const TodoContainer = () => {
       });
 
       console.log("Todos", todos);
+      console.log("todos[0]", todos[0]);
 
       let titlesOfTodosArray = data.records.map(function(item) {
         const todosTitles =  item.fields.title
@@ -45,9 +50,9 @@ const TodoContainer = () => {
       });
 
       titlesOfTodosArray = titlesOfTodosArray.sort();
-
-      console.log(titlesOfTodosArray);
+      console.log("Sorted titlesOfTodosArray asc:", titlesOfTodosArray);
       
+
       setTodoList(todos);
       setIsLoading(false);
     } catch (error) {
