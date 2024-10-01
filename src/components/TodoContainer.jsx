@@ -49,7 +49,8 @@ const TodoContainer = () => {
         {
           const titleA = objectA.title;
           const titleB = objectB.title;  
-          return (titleA < titleB) ? -1 : (titleA > titleB) ? 1 : 0;
+          return (titleA < titleB) ? -1 : 
+          (titleA > titleB) ? 1 : 0;
         }  
       );
 
