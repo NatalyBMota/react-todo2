@@ -42,8 +42,20 @@ const TodoContainer = () => {
         return newTodo;
       });
 
+      const sortedTitlesAsc = todos.sort((objectA, objectB) => {
+        const titleA = objectA.title;
+        const titleB = objectB.title;
+      
+        if (titleA < titleB) {
+          return -1;
+        } else if (titleA > titleB) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
 
-      const sortedTitles = todos.sort((objectA, objectB) => {
+      const sortedTitlesDesc = todos.sort((objectA, objectB) => {
         const titleA = objectA.title;
         const titleB = objectB.title;
       
@@ -56,8 +68,9 @@ const TodoContainer = () => {
         }
       });
 
-      console.log("Sorted titles: ", sortedTitles);
-      setTodoList(sortedTitles);
+      console.log("Sorted titles asc: ", sortedTitlesAsc);
+      console.log("Sorted titles desc: ", sortedTitlesDesc);
+      setTodoList(sortedTitlesDesc);
       setIsLoading(false);
     } catch (error) {
       return null;
