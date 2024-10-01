@@ -13,7 +13,6 @@ const TodoContainer = () => {
   const fetchData = async () => {
     const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?view=Grid%20view&sort%5B0%5D%5Bfield%5D=title&sort%5B0%5D%5Bdirection%5D=asc`;
     
-
     const options = {
       method: 'GET',
       headers: {
@@ -29,6 +28,8 @@ const TodoContainer = () => {
         throw new Error(errorResponse);
       }
       let data = await response.json();
+      data.records.sort();
+      console.log("Data:", data);
       let todos = data.records.map(function(item) {
         const newTodo =  {
           id: item.id,
@@ -36,6 +37,7 @@ const TodoContainer = () => {
         }
         return newTodo;
       });
+      console.log("Todos", todos);
       setTodoList(todos);
       setIsLoading(false);
     } catch (error) {
