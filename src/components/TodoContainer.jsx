@@ -53,50 +53,25 @@ const TodoContainer = () => {
     }
   }, [todoList, isLoading]);
 
-  const removeTodo = async (id) => {
-    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}/${id}`;
-    
-    const options = {
-      method: 'DELETE',
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
-      },
-    };
 
-    try {
-      const response = await fetch(url, options);
-
-      if (!response.ok) {
-        let errorResponse = `${response.status}`;
-        throw new Error(errorResponse);
-      }
-
-      const filteredTodoList = todoList.filter((item) => item.id !== id);
-      setTodoList(filteredTodoList);
-    } catch (error) {
-      return null;
-    }
-  };
-
-    return (
-        <>
-            <nav>
-              <Link to="/new" alt="Click here to create a new todo list.">New Todo List</Link>
-              <Link to="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</Link>
-            </nav>
-            <main>
-              <section>
-                <h1>Todo List</h1>
-                <AddTodoForm todoList={todoList} setTodoList={setTodoList} />
-                {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} onRemoveTodo={removeTodo} />)}
-              </section>
-              <section>
-                <img src={checkListImg} alt="Checklist." className={styles.checkListImg} />             
-              </section>
-            </main>
-          </>
-    );
+  return (
+    <>
+      <nav>
+        <Link to="/new" alt="Click here to create a new todo list.">New Todo List</Link>
+        <Link to="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</Link>
+      </nav>
+      <main>
+        <section>
+          <h1>Todo List</h1>
+          <AddTodoForm todoList={todoList} setTodoList={setTodoList} />
+          {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} setTodoList={setTodoList} />)}
+        </section>
+        <section>
+          <img src={checkListImg} alt="Checklist." className={styles.checkListImg} />             
+        </section>
+      </main>
+    </>
+  );
 };
 
 TodoContainer.propTypes = {
