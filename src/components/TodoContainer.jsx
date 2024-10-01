@@ -42,15 +42,9 @@ const TodoContainer = () => {
         return newTodo;
       });
 
-      const sortedTitles = todos.sort((objectA, objectB) => {      
-        if (objectA.title < objectB.title) {
-          return 1;
-        } else if (objectA.title > objectB.title) {
-          return -1;
-        } else {
-          return 0;
-        }
-      });
+      const sortedTitles = todos.sort((objectA, objectB) =>       
+          (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0
+      );
 
       console.log("Sorted titles: ", sortedTitles);
       setTodoList(sortedTitles);
