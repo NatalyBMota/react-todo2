@@ -33,7 +33,7 @@ const TodoContainer = () => {
         throw new Error(errorResponse);
       }
       let data = await response.json();
-      console.log(data);
+
       let todos = data.records.map(function(item) {
         const newTodo =  {
           id: item.id,
@@ -42,26 +42,35 @@ const TodoContainer = () => {
         return newTodo;
       });
 
-      // const sortedTitles = todos.sort((objectA, objectB) =>
-      //   {
-      //     const titleA = objectA.title;
-      //     const titleB = objectB.title;  
-      //     return (titleA < titleB) ? -1 : 
-      //     (titleA > titleB) ? 1 : 0;
-      //   }  
-      // );
+      const sortTitleOfTodosAsc = () => {
+        const sortedTitles = todos.sort((objectA, objectB) =>
+          {
+            const titleA = objectA.title;
+            const titleB = objectB.title;  
+            return (titleA < titleB) ? -1 : 
+            (titleA > titleB) ? 1 : 0;
+          }  
+        );
+        return sortedTitles;
+      };
 
-      const sortedTitles = todos.sort((objectA, objectB) =>
-        {
-          const titleA = objectA.title;
-          const titleB = objectB.title;  
-          return (titleA < titleB) ? 1 : 
-          (titleA > titleB) ? -1 : 0;
-        }  
-      );
+      console.log("Sorted Titles Asc: ", sortTitleOfTodosAsc);
 
-      console.log("Sorted titles: ", sortedTitles);
-      setTodoList(sortedTitles);
+      const sortTitleOfTodosDesc = () => {
+        const sortedTitles = todos.sort((objectA, objectB) =>
+          {
+            const titleA = objectA.title;
+            const titleB = objectB.title;  
+            return (titleA < titleB) ? 1 : 
+            (titleA > titleB) ? -1 : 0;
+          }  
+        );
+        console.log("Sorted titles: ", sortedTitles);
+        return sortedTitles;
+      };
+
+      console.log("Sorted Titles Desc:", sortTitleOfTodosAsc);
+      setTodoList(sortTitleOfTodosDesc);
       setIsLoading(false);
     } catch (error) {
       return null;
