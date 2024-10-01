@@ -11,11 +11,11 @@ const TodoContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    const queryParam1 = "view=Grid%20view";
-    const queryParam2 = "sort%5B0%5D%5Bfield%5D=title";
-    const queryParam3 = "sort%5B0%5D%5Bdirection%5D=asc";
+    const tableViewToGetQueryParam = "view=Grid%20view";
+    const sortQueryParam = "sort%5B0%5D%5Bfield%5D=title";
+    const sortDirectionQueryParam = "sort%5B0%5D%5Bdirection%5D=asc";
 
-    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?${queryParam1}&${queryParam2}&${queryParam3}`;
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?${tableViewToGetQueryParam}&${sortQueryParam}&${sortDirectionQueryParam}`;
     
     const options = {
       method: 'GET',
