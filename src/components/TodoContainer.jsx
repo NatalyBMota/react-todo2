@@ -43,38 +43,26 @@ const TodoContainer = () => {
         return newTodo;
       });
 
-      const sortAscCallPack = (objectA, objectB) => {
-        const titleA = objectA.title;
-        const titleB = objectB.title;
-        if (titleA < titleB) {
-          return -1;
-        } else if (titleA > titleB) {
-          return 1;
+      const sortAscCallPack = (objectA, objectB) => (objectA.title < objectB.title) ? -1 : (objectA.title > objectB.title) ? 1 : 0;
+
+      const sortDescCallPack = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
+
+      // let ascOrder = true;
+      const toggleSortOrderOfTitle = (ascOrder) => {
+        const sortedTitles = [];
+        if (ascOrder) {
+          return [...todos].sort(sortAscCallPack);
         } else {
-          return 0;
+          return [...todos].sort(sortDescCallPack);
         }
       };
 
-      const sortDescCallPack = (objectA, objectB) => {
-        const titleA = objectA.title;
-        const titleB = objectB.title;
-        if (titleA < titleB) {
-          return 1;
-        } else if (titleA > titleB) {
-          return -1;
-        } else {
-          return 0;
-        }
-      };
+      
 
-      const sortedTitlesAsc = [...todos].sort(sortAscCallPack);
+      console.log("Sorted titles asc: ", toggleSortOrderOfTitle(true));
+      console.log("Sorted titles desc: ", toggleSortOrderOfTitle(false));
 
-      console.log("Sorted titles asc: ", sortedTitlesAsc);
-
-      const sortedTitlesDesc = [...todos].sort(sortDescCallPack);
-
-      console.log("Sorted titles desc: ", sortedTitlesDesc);
-      setTodoList(sortedTitlesDesc);
+      setTodoList(toggleSortOrderOfTitle(false));
       setIsLoading(false);
     } catch (error) {
       return null;
@@ -97,6 +85,7 @@ const TodoContainer = () => {
       <nav>
         <Link to="/new" alt="Click here to create a new todo list.">New Todo List</Link>
         <Link to="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</Link>
+        <button>Toggle Sort Order</button>
       </nav>
       <main>
         <section>
