@@ -47,30 +47,54 @@ const TodoContainer = () => {
           {
             const titleA = objectA.title;
             const titleB = objectB.title;  
-            return (titleA < titleB) ? -1 : 
-            (titleA > titleB) ? 1 : 0;
+            if (titleA < titleB) {
+              return -1; 
+            } 
+            else if (titleA > titleB) {
+              return 1;
+            }
+            else {
+              return 0;
+            }
           }  
         );
         return sortedTitles;
       };
 
-      console.log("Sorted Titles Asc: ", sortTitleOfTodosAsc);
+      console.log("Sorted Titles Asc: ", sortTitleOfTodosAsc());
 
       const sortTitleOfTodosDesc = () => {
         const sortedTitles = todos.sort((objectA, objectB) =>
           {
             const titleA = objectA.title;
             const titleB = objectB.title;  
-            return (titleA < titleB) ? 1 : 
-            (titleA > titleB) ? -1 : 0;
+            if (titleA < titleB) {
+              return 1;
+            }
+            else if (titleA > titleB) {
+              return -1;
+            }
+            else {
+              return 0;
+            }
           }  
         );
         console.log("Sorted titles: ", sortedTitles);
         return sortedTitles;
       };
 
-      console.log("Sorted Titles Desc:", sortTitleOfTodosAsc);
-      setTodoList(sortTitleOfTodosDesc);
+      const sortingTitleAscOrder = true;
+      const toggleTitleSortOrder = (sortingTitleAscOrder) => {
+        console.log("toggleTitleSortOrder: ", toggleTitleSortOrder);
+        if (sortingTitleAscOrder === true) {
+          return sortTitleOfTodosAsc();
+        } else {
+          return sortTitleOfTodosDesc();
+        }
+      };
+
+      console.log("Sorted Titles Desc:", sortTitleOfTodosDesc());
+      setTodoList(sortTitleOfTodosAsc);
       setIsLoading(false);
     } catch (error) {
       return null;
@@ -92,6 +116,7 @@ const TodoContainer = () => {
       <nav>
         <Link to="/new" alt="Click here to create a new todo list.">New Todo List</Link>
         <Link to="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</Link>
+        <button>Toggle Sorting Order</button>
       </nav>
       <main>
         <section>
