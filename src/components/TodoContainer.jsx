@@ -42,13 +42,10 @@ const TodoContainer = () => {
         return newTodo;
       });
 
-      const sortedTitles = todos.sort((objectA, objectB) => {
-        const titleA = objectA.title;
-        const titleB = objectB.title;
-      
-        if (titleA < titleB) {
+      const sortedTitles = todos.sort((objectA, objectB) => {      
+        if (objectA.title < objectB.title) {
           return 1;
-        } else if (titleA > titleB) {
+        } else if (objectA.title > objectB.title) {
           return -1;
         } else {
           return 0;
