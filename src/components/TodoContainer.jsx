@@ -28,8 +28,8 @@ const TodoContainer = () => {
         throw new Error(errorResponse);
       }
       let data = await response.json();
-      data.records.sort();
-      console.log("Data:", data);
+      // data.records.sort();
+      // console.log("Data:", data);
       let todos = data.records.map(function(item) {
         const newTodo =  {
           id: item.id,
@@ -38,6 +38,8 @@ const TodoContainer = () => {
         return newTodo;
       });
       console.log("Todos", todos);
+      todos = todos.sort();
+      console.log("Sorted Todos", todos);
       setTodoList(todos);
       setIsLoading(false);
     } catch (error) {
