@@ -4,8 +4,34 @@ import InputWithLabel from './InputWithLabel';
 import styles from './AddTodoForm.module.css';
 import addSign from '../assets/add-sign.svg';
 
-const AddTodoForm = ({onAddTodo}) => {
+const AddTodoForm = ({todoList, setTodoList}) => {
     const [todoTitle, setTodoTitle] = useState("");
+
+    const addTodo = async (newTodo) => {
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
+    
+    const options = {
+        method: 'POST',
+        headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+        },
+        body: JSON.stringify({"fields":
+        {
+            "title": newTodo.title,
+        }
+        })
+    };
+
+    const response = await fetch(url, options);
+    const json = await response.json();
+    
+        setTodoList([...todoList, {
+            id: json.id, 
+            title: json.fields.title,
+        }]);
+    };
+    
 
     const handleTitleChange = (event) => {
         const newTodoTitle = event.target.value;
@@ -14,7 +40,7 @@ const AddTodoForm = ({onAddTodo}) => {
 
     const handleAddTodo = (event) => {
         event.preventDefault();
-        onAddTodo({id: Date.now(), title: todoTitle});
+        addTodo({id: Date.now(), title: todoTitle});
         setTodoTitle("");
     };
 

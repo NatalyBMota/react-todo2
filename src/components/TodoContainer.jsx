@@ -53,31 +53,6 @@ const TodoContainer = () => {
     }
   }, [todoList, isLoading]);
 
-  const addTodo = async (newTodo) => {
-    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
-  
-    const options = {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
-      },
-      body: JSON.stringify({"fields":
-        {
-          "title": newTodo.title,
-        }
-      })
-    };
-
-    const response = await fetch(url, options);
-    const json = await response.json();
-    
-    setTodoList([...todoList, {
-      id: json.id, 
-      title: json.fields.title,
-    }]);
-  };
-
   const removeTodo = async (id) => {
     const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}/${id}`;
     
@@ -113,7 +88,7 @@ const TodoContainer = () => {
             <main>
               <section>
                 <h1>Todo List</h1>
-                <AddTodoForm onAddTodo={addTodo} />
+                <AddTodoForm todoList={todoList} setTodoList={setTodoList} />
                 {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} onRemoveTodo={removeTodo} />)}
               </section>
               <section>
