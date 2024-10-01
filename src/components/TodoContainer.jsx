@@ -13,7 +13,8 @@ const TodoContainer = () => {
   const fetchData = async () => {
     const tableViewToGetQueryParam = "view=Grid%20view";
     const sortQueryParam = "sort%5B0%5D%5Bfield%5D=title";
-    const sortDirectionQueryParam = "sort%5B0%5D%5Bdirection%5D=asc";
+    const sortAscending = "asc";
+    const sortDirectionQueryParam = `sort%5B0%5D%5Bdirection%5D=${sortAscending}`;
 
     const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?${tableViewToGetQueryParam}&${sortQueryParam}&${sortDirectionQueryParam}`;
     
@@ -32,7 +33,7 @@ const TodoContainer = () => {
         throw new Error(errorResponse);
       }
       let data = await response.json();
-
+      console.log(data);
       let todos = data.records.map(function(item) {
         const newTodo =  {
           id: item.id,
@@ -41,19 +42,21 @@ const TodoContainer = () => {
         return newTodo;
       });
 
-      console.log("Todos", todos);
-      console.log("todos[0]", todos[0]);
-
-      let titlesOfTodosArray = data.records.map(function(item) {
-        const todosTitles =  item.fields.title
-        return todosTitles;
+      const sortedTitles = todos.sort((objectA, objectB) => {
+        const titleA = objectA.title;
+        const titleB = objectB.title;
+      
+        if (titleA < titleB) {
+          return 1;
+        } else if (titleA > titleB) {
+          return -1;
+        } else {
+          return 0;
+        }
       });
 
-      titlesOfTodosArray = titlesOfTodosArray.sort();
-      console.log("Sorted titlesOfTodosArray asc:", titlesOfTodosArray);
-      
-
-      setTodoList(todos);
+      console.log("Sorted titles: ", sortedTitles);
+      setTodoList(sortedTitles);
       setIsLoading(false);
     } catch (error) {
       return null;
@@ -69,7 +72,6 @@ const TodoContainer = () => {
       localStorage.setItem('savedTodoList', JSON.stringify(todoList));
     }
   }, [todoList, isLoading]);
-
 
   return (
     <>
