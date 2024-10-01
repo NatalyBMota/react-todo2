@@ -11,12 +11,13 @@ const TodoContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    const tableViewToGetQueryParam = "view=Grid%20view";
-    const sortQueryParam = "sort%5B0%5D%5Bfield%5D=title";
-    const sortAscending = "asc";
-    const sortDirectionQueryParam = `sort%5B0%5D%5Bdirection%5D=${sortAscending}`;
+    // const tableViewToGetQueryParam = "view=Grid%20view";
+    // const sortQueryParam = "sort%5B0%5D%5Bfield%5D=title";
+    // const sortAscending = "asc";
+    // const sortDirectionQueryParam = `sort%5B0%5D%5Bdirection%5D=${sortAscending}`;
 
-    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?${tableViewToGetQueryParam}&${sortQueryParam}&${sortDirectionQueryParam}`;
+    // const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?${tableViewToGetQueryParam}&${sortQueryParam}&${sortDirectionQueryParam}`;
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
     
     const options = {
       method: 'GET',
@@ -42,10 +43,9 @@ const TodoContainer = () => {
         return newTodo;
       });
 
-      const sortedTitlesAsc = todos.sort((objectA, objectB) => {
+      const sortAscCallPack = (objectA, objectB) => {
         const titleA = objectA.title;
         const titleB = objectB.title;
-      
         if (titleA < titleB) {
           return -1;
         } else if (titleA > titleB) {
@@ -53,12 +53,11 @@ const TodoContainer = () => {
         } else {
           return 0;
         }
-      });
+      };
 
-      const sortedTitlesDesc = todos.sort((objectA, objectB) => {
+      const sortDescCallPack = (objectA, objectB) => {
         const titleA = objectA.title;
         const titleB = objectB.title;
-      
         if (titleA < titleB) {
           return 1;
         } else if (titleA > titleB) {
@@ -66,9 +65,14 @@ const TodoContainer = () => {
         } else {
           return 0;
         }
-      });
+      };
+
+      const sortedTitlesAsc = [...todos].sort(sortAscCallPack);
 
       console.log("Sorted titles asc: ", sortedTitlesAsc);
+
+      const sortedTitlesDesc = [...todos].sort(sortDescCallPack);
+
       console.log("Sorted titles desc: ", sortedTitlesDesc);
       setTodoList(sortedTitlesDesc);
       setIsLoading(false);
