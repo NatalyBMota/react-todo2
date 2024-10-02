@@ -1,6 +1,5 @@
 import { useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
 import TodoList from './TodoList.jsx';
 import AddTodoForm from './AddTodoForm.jsx';
 import styles from './TodoContainer.module.css';
@@ -9,6 +8,21 @@ import checkListImg from '../assets/checklist.svg';
 const TodoContainer = () => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+
+  const sortAscCallPack1 = (objectA, objectB) => (objectA.title < objectB.title) ? -1 : (objectA.title > objectB.title) ? 1 : 0;
+
+  const sortDescCallPack1 = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
+
+  const toggleTitleSortOrder = (ascOrder) => {
+    if (ascOrder) {
+      return [...todoList].sort(sortAscCallPack1);
+    } else {
+      return [...todoList].sort(sortDescCallPack1);
+    }
+  };
+
+  console.log(toggleTitleSortOrder(true));
 
   const fetchData = async () => {
     const tableViewToGetQueryParam = "view=Grid%20view";
