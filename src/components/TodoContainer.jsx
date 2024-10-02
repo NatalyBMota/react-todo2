@@ -14,15 +14,15 @@ const TodoContainer = () => {
 
   const sortDescCallPack1 = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
 
-  const toggleTitleSortOrder = (ascOrder) => {
+  const toggleTitleSortOrder = (ascOrder, listToSort) => {
     if (ascOrder) {
-      return [...todoList].sort(sortAscCallPack1);
+      return [...listToSort].sort(sortAscCallPack1);
     } else {
-      return [...todoList].sort(sortDescCallPack1);
+      return [...listToSort].sort(sortDescCallPack1);
     }
   };
 
-  console.log(toggleTitleSortOrder(true));
+  console.log("Toggle Sort Order: ", toggleTitleSortOrder(false, todoList));
 
   const fetchData = async () => {
     const tableViewToGetQueryParam = "view=Grid%20view";
@@ -57,19 +57,7 @@ const TodoContainer = () => {
         return newTodo;
       });
 
-      const sortAscCallPack = (objectA, objectB) => (objectA.title < objectB.title) ? -1 : (objectA.title > objectB.title) ? 1 : 0;
-
-      const sortDescCallPack = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
-
-      const toggleSortOrderOfTitle = (ascOrder) => {
-        if (ascOrder) {
-          return [...todos].sort(sortAscCallPack);
-        } else {
-          return [...todos].sort(sortDescCallPack);
-        }
-      };
-
-      setTodoList(toggleSortOrderOfTitle(false));
+      setTodoList(toggleTitleSortOrder(false, todos));
       setIsLoading(false);
     } catch (error) {
       return null;
