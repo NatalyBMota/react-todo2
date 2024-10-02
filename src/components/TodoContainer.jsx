@@ -8,21 +8,29 @@ import checkListImg from '../assets/checklist.svg';
 const TodoContainer = () => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [ascOrderToggle, setToggle] = useState(true);
 
 
-  const sortAscCallPack1 = (objectA, objectB) => (objectA.title < objectB.title) ? -1 : (objectA.title > objectB.title) ? 1 : 0;
+  const sortAscCallPack = (objectA, objectB) => (objectA.title < objectB.title) ? -1 : (objectA.title > objectB.title) ? 1 : 0;
 
-  const sortDescCallPack1 = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
+  const sortDescCallPack = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
 
-  const toggleTitleSortOrder = (ascOrder, listToSort) => {
-    if (ascOrder) {
-      return [...listToSort].sort(sortAscCallPack1);
+  const toggleTitleSortOrder = () => {
+    console.log("ascOrderToggle before", ascOrderToggle);
+    setToggle(!ascOrderToggle);
+    console.log("ascOrderToggle after", ascOrderToggle);
+    console.log("Sorted Todo List", titleSortOrder(todoList));
+  }
+
+  const titleSortOrder = (listToSort) => {
+    if (!ascOrderToggle) {
+      const sortedList = [...listToSort].sort(sortDescCallPack);
+      return sortedList;
     } else {
-      return [...listToSort].sort(sortDescCallPack1);
+      const sortedList = [...listToSort].sort(sortAscCallPack);
+      return sortedList;
     }
   };
-
-  console.log("Toggle Sort Order: ", toggleTitleSortOrder(false, todoList));
 
   const fetchData = async () => {
     const tableViewToGetQueryParam = "view=Grid%20view";
@@ -56,8 +64,8 @@ const TodoContainer = () => {
         }
         return newTodo;
       });
-
-      setTodoList(toggleTitleSortOrder(false, todos));
+      
+      setTodoList(titleSortOrder(todos));
       setIsLoading(false);
     } catch (error) {
       return null;
@@ -80,6 +88,7 @@ const TodoContainer = () => {
       <nav>
         <Link to="/new" alt="Click here to create a new todo list.">New Todo List</Link>
         <Link to="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</Link>
+        <button onClick={() => toggleTitleSortOrder()}>Toggle Sort Order</button>
       </nav>
       <main>
         <section>
