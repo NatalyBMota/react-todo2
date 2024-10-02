@@ -93,11 +93,4 @@ const TodoContainer = () => {
   );
 };
 
-TodoContainer.propTypes = {
-  addTodo: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  todoList: PropTypes.array.isRequired,
-  removeTodo: PropTypes.func.isRequired,
-};
-
 export default TodoContainer;

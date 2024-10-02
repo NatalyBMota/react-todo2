@@ -55,7 +55,8 @@ const AddTodoForm = ({todoList, setTodoList}) => {
 };
 
 AddTodoForm.propTypes = {
-    onAddTodo: PropTypes.func.isRequired,
+    todoList: PropTypes.array.isRequired,
+    setTodoList: PropTypes.func.isRequired,
 };
 
 export default AddTodoForm;

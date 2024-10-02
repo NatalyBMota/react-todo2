@@ -22,7 +22,7 @@ const TodoList = ({todoList, setTodoList}) => {
 
 TodoList.propTypes = {
   todoList: PropTypes.array.isRequired,
-  onRemoveTodo: PropTypes.func.isRequired,
+  setTodoList: PropTypes.func.isRequired,
 };
 
 export default TodoList;
