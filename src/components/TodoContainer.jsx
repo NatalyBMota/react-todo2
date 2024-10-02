@@ -11,13 +11,13 @@ const TodoContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    // const tableViewToGetQueryParam = "view=Grid%20view";
-    // const sortQueryParam = "sort%5B0%5D%5Bfield%5D=title";
-    // const sortAscending = "asc";
-    // const sortDirectionQueryParam = `sort%5B0%5D%5Bdirection%5D=${sortAscending}`;
+    const tableViewToGetQueryParam = "view=Grid%20view";
+    const sortQueryParam = "sort%5B0%5D%5Bfield%5D=title";
+    const sortAscending = "asc";
+    const sortDirectionQueryParam = `sort%5B0%5D%5Bdirection%5D=${sortAscending}`;
 
-    // const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?${tableViewToGetQueryParam}&${sortQueryParam}&${sortDirectionQueryParam}`;
-    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?${tableViewToGetQueryParam}&${sortQueryParam}&${sortDirectionQueryParam}`;
+    
     
     const options = {
       method: 'GET',
@@ -34,7 +34,7 @@ const TodoContainer = () => {
         throw new Error(errorResponse);
       }
       let data = await response.json();
-      console.log(data);
+
       let todos = data.records.map(function(item) {
         const newTodo =  {
           id: item.id,
@@ -47,20 +47,13 @@ const TodoContainer = () => {
 
       const sortDescCallPack = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
 
-      // let ascOrder = true;
       const toggleSortOrderOfTitle = (ascOrder) => {
-        const sortedTitles = [];
         if (ascOrder) {
           return [...todos].sort(sortAscCallPack);
         } else {
           return [...todos].sort(sortDescCallPack);
         }
       };
-
-      
-
-      console.log("Sorted titles asc: ", toggleSortOrderOfTitle(true));
-      console.log("Sorted titles desc: ", toggleSortOrderOfTitle(false));
 
       setTodoList(toggleSortOrderOfTitle(false));
       setIsLoading(false);
@@ -85,7 +78,6 @@ const TodoContainer = () => {
       <nav>
         <Link to="/new" alt="Click here to create a new todo list.">New Todo List</Link>
         <Link to="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</Link>
-        <button>Toggle Sort Order</button>
       </nav>
       <main>
         <section>
