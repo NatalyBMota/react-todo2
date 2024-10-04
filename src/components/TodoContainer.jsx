@@ -11,23 +11,25 @@ const TodoContainer = () => {
   const [ascOrderToggle, setToggle] = useState(true);
 
 
-  const sortAscCallPack = (objectA, objectB) => (objectA.title < objectB.title) ? -1 : (objectA.title > objectB.title) ? 1 : 0;
+  const sortAscCallBack = (objectA, objectB) => (objectA.title < objectB.title) ? -1 : (objectA.title > objectB.title) ? 1 : 0;
 
-  const sortDescCallPack = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
+  const sortDescCallBack = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
 
   const toggleTitleSortOrder = () => {
     console.log("ascOrderToggle before", ascOrderToggle);
-    setToggle(!ascOrderToggle);
-    console.log("ascOrderToggle after", ascOrderToggle);
-    console.log("Sorted Todo List", titleSortOrder(todoList));
+    let reverseValueOfSortOrder = !ascOrderToggle; 
+    setToggle(reverseValueOfSortOrder);
+    console.log("ascOrderToggle after", reverseValueOfSortOrder);
+    console.log("Sorted Todo List", titleSortOrder(todoList, reverseValueOfSortOrder));
+    setTodoList(titleSortOrder(todoList, reverseValueOfSortOrder));
   }
 
-  const titleSortOrder = (listToSort) => {
-    if (!ascOrderToggle) {
-      const sortedList = [...listToSort].sort(sortDescCallPack);
+  const titleSortOrder = (listToSort, sortAscendingOrder) => {
+    if (!sortAscendingOrder) {
+      const sortedList = [...listToSort].sort(sortDescCallBack);
       return sortedList;
     } else {
-      const sortedList = [...listToSort].sort(sortAscCallPack);
+      const sortedList = [...listToSort].sort(sortAscCallBack);
       return sortedList;
     }
   };
@@ -65,7 +67,7 @@ const TodoContainer = () => {
         return newTodo;
       });
       
-      setTodoList(titleSortOrder(todos));
+      setTodoList(titleSortOrder(todos, true));
       setIsLoading(false);
     } catch (error) {
       return null;
