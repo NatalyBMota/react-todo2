@@ -76,7 +76,7 @@ const TodoContainer = () => {
 
   useEffect(() => {
     fetchData();
-  }, [isAscOrder]);
+  }, [fetchData, isAscOrder]);
 
   useEffect(() => {
     if (!isLoading) {
