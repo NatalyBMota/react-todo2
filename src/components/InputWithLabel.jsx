@@ -20,6 +20,7 @@ const InputWithLabel = (props) => {
                 value={props.todoTitle} 
                 onChange={props.handleTitleChange} 
                 className={styles.inputField}
+                autofocus
             />
         </>
     );
