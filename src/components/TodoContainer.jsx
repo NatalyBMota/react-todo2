@@ -8,7 +8,7 @@ import checkListImg from '../assets/checklist.svg';
 const TodoContainer = () => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [ascOrderToggle, setToggle] = useState(true);
+  const [isAscOrder, setToggle] = useState(true);
 
 
   const sortAscCallBack = (objectA, objectB) => (objectA.title < objectB.title) ? -1 : (objectA.title > objectB.title) ? 1 : 0;
@@ -16,8 +16,8 @@ const TodoContainer = () => {
   const sortDescCallBack = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
 
   const toggleTitleSortOrder = () => {
-    console.log("ascOrderToggle before", ascOrderToggle);
-    let reverseValueOfSortOrder = !ascOrderToggle; 
+    console.log("ascOrderToggle before", isAscOrder);
+    let reverseValueOfSortOrder = !isAscOrder; 
     setToggle(reverseValueOfSortOrder);
     console.log("ascOrderToggle after", reverseValueOfSortOrder);
     console.log("Sorted Todo List", titleSortOrder(todoList, reverseValueOfSortOrder));
@@ -90,7 +90,7 @@ const TodoContainer = () => {
       <nav>
         <Link to="/new" alt="Click here to create a new todo list.">New Todo List</Link>
         <Link to="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</Link>
-        <button onClick={() => toggleTitleSortOrder()}>Toggle Sort Order</button>
+        <button onClick={() => toggleTitleSortOrder()}> Current Sort: {isAscOrder ? "Asc" : "Desc"}</button>
       </nav>
       <main>
         <section>
