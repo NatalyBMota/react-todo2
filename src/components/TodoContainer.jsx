@@ -1,6 +1,5 @@
 import { useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
 import TodoList from './TodoList.jsx';
 import AddTodoForm from './AddTodoForm.jsx';
 import styles from './TodoContainer.module.css';
@@ -9,6 +8,31 @@ import checkListImg from '../assets/checklist.svg';
 const TodoContainer = () => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [ascOrderToggle, setToggle] = useState(true);
+
+
+  const sortAscCallBack = (objectA, objectB) => (objectA.title < objectB.title) ? -1 : (objectA.title > objectB.title) ? 1 : 0;
+
+  const sortDescCallBack = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
+
+  const toggleTitleSortOrder = () => {
+    console.log("ascOrderToggle before", ascOrderToggle);
+    let reverseValueOfSortOrder = !ascOrderToggle; 
+    setToggle(reverseValueOfSortOrder);
+    console.log("ascOrderToggle after", reverseValueOfSortOrder);
+    console.log("Sorted Todo List", titleSortOrder(todoList, reverseValueOfSortOrder));
+    setTodoList(titleSortOrder(todoList, reverseValueOfSortOrder));
+  }
+
+  const titleSortOrder = (listToSort, sortAscendingOrder) => {
+    if (!sortAscendingOrder) {
+      const sortedList = [...listToSort].sort(sortDescCallBack);
+      return sortedList;
+    } else {
+      const sortedList = [...listToSort].sort(sortAscCallBack);
+      return sortedList;
+    }
+  };
 
   const fetchData = async () => {
     const tableViewToGetQueryParam = "view=Grid%20view";
@@ -42,20 +66,8 @@ const TodoContainer = () => {
         }
         return newTodo;
       });
-
-      const sortAscCallPack = (objectA, objectB) => (objectA.title < objectB.title) ? -1 : (objectA.title > objectB.title) ? 1 : 0;
-
-      const sortDescCallPack = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
-
-      const toggleSortOrderOfTitle = (ascOrder) => {
-        if (ascOrder) {
-          return [...todos].sort(sortAscCallPack);
-        } else {
-          return [...todos].sort(sortDescCallPack);
-        }
-      };
-
-      setTodoList(toggleSortOrderOfTitle(false));
+      
+      setTodoList(titleSortOrder(todos, true));
       setIsLoading(false);
     } catch (error) {
       return null;
@@ -78,6 +90,7 @@ const TodoContainer = () => {
       <nav>
         <Link to="/new" alt="Click here to create a new todo list.">New Todo List</Link>
         <Link to="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</Link>
+        <button onClick={() => toggleTitleSortOrder()}>Toggle Sort Order</button>
       </nav>
       <main>
         <section>
