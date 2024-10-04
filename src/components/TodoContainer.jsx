@@ -10,7 +10,6 @@ const TodoContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isAscOrder, setToggle] = useState(true);
 
-
   const sortAscCallBack = (objectA, objectB) => (objectA.title < objectB.title) ? -1 : (objectA.title > objectB.title) ? 1 : 0;
 
   const sortDescCallBack = (objectA, objectB) => (objectA.title < objectB.title) ? 1 : (objectA.title > objectB.title) ? -1 : 0;
@@ -76,7 +75,7 @@ const TodoContainer = () => {
 
   useEffect(() => {
     fetchData();
-  }, [isAscOrder]);
+  }, []);
 
   useEffect(() => {
     if (!isLoading) {
