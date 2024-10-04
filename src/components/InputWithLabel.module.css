@@ -8,6 +8,10 @@
     background-color: #f6fff8;
 }
 
+.inputField:focus {
+    background-color: grey;
+}
+
 /* Galaxy S10/S10+ Android 11 in Portrait View is 360px wide. Yet, the browser's testing tools won't display the below rule for this partifular phone's preview, unless the max-width is set to 1 pixel wider (to 361px). */
 @media only screen and (max-width: 361px) {
     .inputField {
