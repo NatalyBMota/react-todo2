@@ -20,7 +20,7 @@ const TodoContainer = () => {
     setTodoList(titleSortOrder(todoList, reverseValueOfSortOrder));
   }
 
-  const titleSortOrder = (listToSort, sortAscendingOrder) => {
+  const titleSortOrder = useCallback((listToSort, sortAscendingOrder) => {
     if (!sortAscendingOrder) {
       const sortedList = [...listToSort].sort(sortDescCallBack);
       return sortedList;
@@ -28,7 +28,7 @@ const TodoContainer = () => {
       const sortedList = [...listToSort].sort(sortAscCallBack);
       return sortedList;
     }
-  };
+  }, []);
 
   const fetchData = useCallback(async () => {
     const tableName = import.meta.env.VITE_TABLE_NAME;
@@ -69,7 +69,7 @@ const TodoContainer = () => {
     } catch (error) {
       return null;
     }
-  }, [isAscOrder]);
+  }, [isAscOrder, titleSortOrder]);
 
   useEffect(() => {
     fetchData();
