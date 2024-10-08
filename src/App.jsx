@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TodoContainer from './components/TodoContainer.jsx';
+import LandingPage from './components/LandingPage.jsx';
 
 const App = () => { 
   
@@ -14,7 +15,7 @@ const App = () => {
         }>
         </Route>
         <Route path="/landing" exact element={
-          <h1>Landing Page</h1>
+          <LandingPage />
         }></Route>
       </Routes>
     </BrowserRouter>
