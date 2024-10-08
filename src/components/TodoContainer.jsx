@@ -121,6 +121,8 @@ const TodoContainer = ({ tableName }) => {
 
     try {
       const response = await fetch(url, options);
+      const json = await response.json();
+      console.log(json.deleted);
 
       if (!response.ok) {
         let errorResponse = `${response.status}`;
