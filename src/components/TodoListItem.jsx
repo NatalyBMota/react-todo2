@@ -3,7 +3,6 @@ import styles from './TodoListItem.module.css';
 import trashCan from '../assets/trash-can.svg';
 
 const TodoListItem = ({ id, todo, removeTodo }) => {
-
     return (
         <li key={id} className={styles.listItem}>
             {todo}

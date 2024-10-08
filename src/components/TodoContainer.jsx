@@ -108,6 +108,32 @@ const TodoContainer = ({ tableName }) => {
     setTodoList(newList);
   };
 
+  const removeTodo = async (id) => {
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}/${id}`;
+    
+    const options = {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+      },
+    };
+
+    try {
+      const response = await fetch(url, options);
+
+      if (!response.ok) {
+        let errorResponse = `${response.status}`;
+        throw new Error(errorResponse);
+      }
+
+      const filteredTodoList = todoList.filter((item) => item.id !== id);
+      setTodoList(filteredTodoList);
+    } catch (error) {
+      return null;
+    }
+  };
+
   return (
     <>
       <nav>
@@ -119,7 +145,7 @@ const TodoContainer = ({ tableName }) => {
         <section>
           <h1>{tableName} List</h1>
           <AddTodoForm addTodo={addTodo} />
-          {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} setTodoList={setTodoList} />)}
+          {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} removeTodo={removeTodo} />)}
         </section>
         <section>
           <img src={checkListImg} alt="Checklist." className={styles.checkListImg} />             
