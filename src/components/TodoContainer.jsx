@@ -121,12 +121,16 @@ const TodoContainer = ({ tableName }) => {
 
     try {
       const response = await fetch(url, options);
-      const json = await response.json();
-      console.log(json.deleted);
-
       if (!response.ok) {
-        let errorResponse = `${response.status}`;
-        throw new Error(errorResponse);
+        let responseError = `${response.status}`;
+        throw new Error(responseError);
+      }
+
+      const json = await response.json();
+
+      if (json.deleted !== true) {
+        let deleteError = "Record not successfully deleted from table in AirTable account.";
+        throw new Error(deleteError);
       }
 
       const filteredTodoList = todoList.filter((item) => item.id !== id);
@@ -146,7 +150,7 @@ const TodoContainer = ({ tableName }) => {
       <main>
         <section>
           <h1>{tableName} List</h1>
-          <AddTodoForm addTodo={addTodo} />
+          <AddTodoForm onAddTodo={addTodo} />
           {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} removeTodo={removeTodo} />)}
         </section>
         <section>

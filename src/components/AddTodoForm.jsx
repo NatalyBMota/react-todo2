@@ -4,7 +4,7 @@ import InputWithLabel from './InputWithLabel';
 import styles from './AddTodoForm.module.css';
 import addSign from '../assets/add-sign.svg';
 
-const AddTodoForm = ({ addTodo }) => {
+const AddTodoForm = ({ onAddTodo }) => {
     const [todoTitle, setTodoTitle] = useState("");
 
     const handleTitleChange = (event) => {
@@ -14,7 +14,7 @@ const AddTodoForm = ({ addTodo }) => {
 
     const handleAddTodo = (event) => {
         event.preventDefault();
-        addTodo({id: Date.now(), title: todoTitle});
+        onAddTodo({id: Date.now(), title: todoTitle});
         setTodoTitle("");
     };
 
@@ -29,7 +29,7 @@ const AddTodoForm = ({ addTodo }) => {
 };
 
 AddTodoForm.propTypes = {
-    addTodo: PropTypes.func.isRequired
+    onAddTodo: PropTypes.func.isRequired
 };
 
 export default AddTodoForm;
