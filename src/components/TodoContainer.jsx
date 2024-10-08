@@ -5,7 +5,7 @@ import AddTodoForm from './AddTodoForm.jsx';
 import styles from './TodoContainer.module.css';
 import checkListImg from '../assets/checklist.svg';
 
-const TodoContainer = () => {
+const TodoContainer = ({ tableName }) => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isAscOrder, setisAscOrder] = useState(true);
@@ -31,14 +31,12 @@ const TodoContainer = () => {
   }, []);
 
   const fetchData = useCallback(async () => {
-    const tableName = import.meta.env.VITE_TABLE_NAME;
     const tableViewToGetQueryParam = "view=Grid%20view";
     const sortQueryParam = "sort%5B0%5D%5Bfield%5D=title";
     const sortAscending = "asc";
     const sortDirectionQueryParam = `sort%5B0%5D%5Bdirection%5D=${sortAscending}`;
 
     const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${tableName}?${tableViewToGetQueryParam}&${sortQueryParam}&${sortDirectionQueryParam}`;
-    
     
     const options = {
       method: 'GET',
@@ -69,7 +67,7 @@ const TodoContainer = () => {
     } catch (error) {
       return null;
     }
-  }, [isAscOrder, titleSortOrder]);
+  }, [isAscOrder, titleSortOrder, tableName]);
 
   useEffect(() => {
     fetchData();
@@ -91,7 +89,7 @@ const TodoContainer = () => {
       </nav>
       <main>
         <section>
-          <h1>Todo List</h1>
+          <h1>{tableName} List</h1>
           <AddTodoForm todoList={todoList} setTodoList={setTodoList} />
           {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} setTodoList={setTodoList} />)}
         </section>
