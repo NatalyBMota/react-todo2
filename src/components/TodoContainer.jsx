@@ -30,14 +30,15 @@ const TodoContainer = ({ tableName }) => {
       return sortedList;
     }
   }, []);
-
+  
   const fetchData = useCallback(async () => {
     const tableViewToGetQueryParam = "view=Grid%20view";
     const sortQueryParam = "sort%5B0%5D%5Bfield%5D=title";
     const sortAscending = "asc";
     const sortDirectionQueryParam = `sort%5B0%5D%5Bdirection%5D=${sortAscending}`;
+    const sortByProperty = `${sortQueryParam}&${sortDirectionQueryParam}`;
 
-    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${tableName}?${tableViewToGetQueryParam}&${sortQueryParam}&${sortDirectionQueryParam}`;
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${tableName}?${tableViewToGetQueryParam}&${sortByProperty}`;
     
     const options = {
       method: 'GET',
@@ -72,7 +73,7 @@ const TodoContainer = ({ tableName }) => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, [tableName, fetchData]);
 
   useEffect(() => {
     if (!isLoading) {
@@ -80,6 +81,32 @@ const TodoContainer = ({ tableName }) => {
     }
   }, [todoList, isLoading]);
 
+  const addTodo = async (newTodo) => {
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
+    
+    const options = {
+        method: 'POST',
+        headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+        },
+        body: JSON.stringify({"fields":
+        {
+            "title": newTodo.title,
+        }
+        })
+    };
+
+    const response = await fetch(url, options);
+    const json = await response.json();
+
+    let newList = [...todoList, {
+        id: json.id, 
+        title: json.fields.title,
+    }];
+    newList = titleSortOrder(newList, isAscOrder);
+    setTodoList(newList);
+  };
 
   return (
     <>
@@ -91,7 +118,7 @@ const TodoContainer = ({ tableName }) => {
       <main>
         <section>
           <h1>{tableName} List</h1>
-          <AddTodoForm todoList={todoList} setTodoList={setTodoList} />
+          <AddTodoForm addTodo={addTodo} />
           {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} setTodoList={setTodoList} />)}
         </section>
         <section>
@@ -102,8 +129,8 @@ const TodoContainer = ({ tableName }) => {
   );
 };
 
-TodoList.propTypes = {
-  tableName: PropTypes.string.isRequired,
+TodoContainer.propTypes = {
+  tableName: PropTypes.string.isRequired
 };
 
 export default TodoContainer;
