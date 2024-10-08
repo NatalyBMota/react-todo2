@@ -14,7 +14,7 @@ const Switch = () => {
             <Route path="/landing" exact element={
             <LandingPage />
             }></Route>
-      </Routes>
+        </Routes>
     );
 };
 

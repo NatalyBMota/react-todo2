@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import TodoList from './TodoList.jsx';
 import AddTodoForm from './AddTodoForm.jsx';
 import styles from './TodoContainer.module.css';
@@ -99,6 +100,10 @@ const TodoContainer = ({ tableName }) => {
       </main>
     </>
   );
+};
+
+TodoList.propTypes = {
+  tableName: PropTypes.string.isRequired,
 };
 
 export default TodoContainer;
