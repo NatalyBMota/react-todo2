@@ -13,8 +13,8 @@ const App = () => {
           <TodoContainer tableName={tableName} />
         }>
         </Route>
-        <Route path="/new" exact element={
-          <h1>New Todo List</h1>
+        <Route path="/landing" exact element={
+          <h1>Landing Page</h1>
         }></Route>
       </Routes>
     </BrowserRouter>

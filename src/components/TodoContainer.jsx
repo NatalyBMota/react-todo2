@@ -83,7 +83,7 @@ const TodoContainer = ({ tableName }) => {
   return (
     <>
       <nav>
-        <Link to="/new" alt="Click here to create a new todo list.">New Todo List</Link>
+        <Link to="/landing" alt="Go to the landing page.">Landing Page</Link>
         <Link to="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</Link>
         <button onClick={() => toggleTitleSortOrder()}> Current Sort: {isAscOrder ? "Asc" : "Desc"}</button>
       </nav>
