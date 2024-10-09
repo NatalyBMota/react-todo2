@@ -11,7 +11,7 @@ const TodoList = ({ todoList, onRemoveTodo }) => {
                   key={item.id} 
                   id={item.id}
                   todo={item.title} 
-                  removeTodo={onRemoveTodo}
+                  onRemoveTodo={onRemoveTodo}
                 />
               );
           })}
