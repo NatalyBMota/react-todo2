@@ -63,7 +63,10 @@ const TodoContainer = ({ tableName }) => {
         return newTodo;
       });
       
-      setTodoList(titleSortOrder(todos, isAscOrder));
+      const sortedResponseData = titleSortOrder(todos, isAscOrder);
+
+      setTodoList(sortedResponseData);
+      
       setIsLoading(false);
     } catch (error) {
       return null;
