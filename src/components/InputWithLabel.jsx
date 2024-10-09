@@ -1,9 +1,13 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './InputWithLabel.module.css';
 
 const InputWithLabel = ({children, todoTitle, handleTitleChange}) => {
     const inputRef = useRef();
+
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
     
     return (
         <>
