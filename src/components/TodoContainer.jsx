@@ -150,7 +150,7 @@ const TodoContainer = ({ tableName }) => {
         <section>
           <h1 className={styles.nameOfTableHeader}>{tableName} List</h1>
           <AddTodoForm onAddTodo={addTodo} />
-          {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} removeTodo={removeTodo} />)}
+          {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} onRemoveTodo={removeTodo} />)}
         </section>
         <section>
           <img src={checkListImg} alt="Checklist." className={styles.checkListImg} />             
