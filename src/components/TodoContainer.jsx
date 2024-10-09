@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import TodoList from './TodoList.jsx';
 import AddTodoForm from './AddTodoForm.jsx';
@@ -142,11 +141,9 @@ const TodoContainer = ({ tableName }) => {
 
   return (
     <>
-      <nav>
-        <Link to="/landing" alt="Go to the landing page.">Landing Page</Link>
-        <Link to="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</Link>
+      <div>
         <button onClick={() => toggleTitleSortOrder()}> Current Sort: {isAscOrder ? "Asc" : "Desc"}</button>
-      </nav>
+      </div>
       <main>
         <section>
           <h1>{tableName} List</h1>
