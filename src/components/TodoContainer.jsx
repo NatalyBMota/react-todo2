@@ -64,10 +64,9 @@ const TodoContainer = ({ tableName }) => {
       });
       
       const sortedResponseData = titleSortOrder(todos, isAscOrder);
-
       setTodoList(sortedResponseData);
-      
       setIsLoading(false);
+
     } catch (error) {
       return null;
     }
@@ -83,7 +82,7 @@ const TodoContainer = ({ tableName }) => {
     }
   }, [todoList, isLoading]);
 
-  const addTodo = async (newTodo) => {
+  const addTodo = async (title) => {
     const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
     
     const options = {
@@ -94,7 +93,7 @@ const TodoContainer = ({ tableName }) => {
         },
         body: JSON.stringify({"fields":
         {
-            "title": newTodo.title,
+            "title": title.title,
         }
         })
     };
