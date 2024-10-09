@@ -141,12 +141,12 @@ const TodoContainer = ({ tableName }) => {
 
   return (
     <>
-      <div>
-        <button onClick={() => toggleTitleSortOrder()}> Current Sort: {isAscOrder ? "Asc" : "Desc"}</button>
-      </div>
+      <aside className={styles.asideWithToggleSortButton}>
+        <button onClick={() => toggleTitleSortOrder()} className={styles.toggleSortOrderButton}> Current Sort: {isAscOrder ? "Asc" : "Desc"}</button>
+      </aside>
       <main>
         <section>
-          <h1>{tableName} List</h1>
+          <h1 className={styles.nameOfTableHeader}>{tableName} List</h1>
           <AddTodoForm onAddTodo={addTodo} />
           {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} removeTodo={removeTodo} />)}
         </section>

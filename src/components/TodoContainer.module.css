@@ -1,3 +1,16 @@
+.asideWithToggleSortButton {
+    width: 89%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.toggleSortOrderButton {
+    max-width: fit-content;
+    padding: .4em .8em;
+    border: 1px solid white;
+}
+
 @media only screen and (max-width: 1279px) {
     .checkListImg {
         display: none;
@@ -5,7 +18,7 @@
 }
 
 @media only screen and (min-width: 1280px) {
-    h1 {
+    .nameOfTableHeader {
         font-size: 1.5em;
     }
     .checkListImg {
@@ -25,7 +38,7 @@
 }
 
 @media only screen and (min-width: 1536px) {
-    h1 {
+    .nameOfTableHeader {
         font-size: 1.6em;
     }
     /* The nav contains the navigation button */
