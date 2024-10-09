@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import TodoList from './TodoList.jsx';
 import AddTodoForm from './AddTodoForm.jsx';
@@ -64,8 +63,10 @@ const TodoContainer = ({ tableName }) => {
         return newTodo;
       });
       
-      setTodoList(titleSortOrder(todos, isAscOrder));
+      const sortedResponseData = titleSortOrder(todos, isAscOrder);
+      setTodoList(sortedResponseData);
       setIsLoading(false);
+
     } catch (error) {
       return null;
     }
@@ -81,7 +82,7 @@ const TodoContainer = ({ tableName }) => {
     }
   }, [todoList, isLoading]);
 
-  const addTodo = async (newTodo) => {
+  const addTodo = async (title) => {
     const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
     
     const options = {
@@ -92,7 +93,7 @@ const TodoContainer = ({ tableName }) => {
         },
         body: JSON.stringify({"fields":
         {
-            "title": newTodo.title,
+            "title": title.title,
         }
         })
     };
@@ -142,16 +143,14 @@ const TodoContainer = ({ tableName }) => {
 
   return (
     <>
-      <nav>
-        <Link to="/landing" alt="Go to the landing page.">Landing Page</Link>
-        <Link to="https://icons8.com/icons/set/favicon" target="_blank" title="Where I got my fav (or favorite) icon from.">Fav Icons</Link>
-        <button onClick={() => toggleTitleSortOrder()}> Current Sort: {isAscOrder ? "Asc" : "Desc"}</button>
-      </nav>
+      <aside className={styles.asideWithToggleSortButton}>
+        <button onClick={() => toggleTitleSortOrder()} className={styles.toggleSortOrderButton}> Current Sort: {isAscOrder ? "Asc" : "Desc"}</button>
+      </aside>
       <main>
         <section>
-          <h1>{tableName} List</h1>
+          <h1 className={styles.nameOfTableHeader}>{tableName} List</h1>
           <AddTodoForm onAddTodo={addTodo} />
-          {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} removeTodo={removeTodo} />)}
+          {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} onRemoveTodo={removeTodo} />)}
         </section>
         <section>
           <img src={checkListImg} alt="Checklist." className={styles.checkListImg} />             

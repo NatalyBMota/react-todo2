@@ -10,11 +10,20 @@
 
 .trashCanIcon {
     height: 1.5em;
+    margin-right: .9em;
 }
 
 .removeButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-bottom: .7em;
     padding: 0.6em 1.2em;
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: .5em;
+    font-style: normal;
 }
 
 /* iPhone 11 Pro Max iOS 14.6 */

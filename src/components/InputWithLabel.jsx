@@ -1,20 +1,26 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './InputWithLabel.module.css';
 
-const InputWithLabel = (props) => {
+const InputWithLabel = ({children, todoTitle, handleTitleChange}) => {
     const inputRef = useRef();
 
+    const focusInputRefWhenTodoSubmittedWithKeyboard = () => {
+        inputRef.current.focus();
+    }
+
+    useEffect(focusInputRefWhenTodoSubmittedWithKeyboard, []);
+    
     return (
         <>
-            <label htmlFor="todoTitle">{props.children}</label>&nbsp;&nbsp;
+            <label htmlFor="todoTitle">{children}</label>&nbsp;&nbsp;
             <input 
                 type="text" 
                 name="title" 
                 ref={inputRef} 
                 id='todoTitle' 
-                value={props.todoTitle} 
-                onChange={props.handleTitleChange} 
+                value={todoTitle} 
+                onChange={handleTitleChange} 
                 className={styles.inputField}
                 autoFocus
             />
@@ -25,6 +31,7 @@ const InputWithLabel = (props) => {
 InputWithLabel.propTypes = {
     todoTitle: PropTypes.string.isRequired,
     handleTitleChange: PropTypes.func.isRequired,
+    children: PropTypes.element.isRequired
 };
 
 export default InputWithLabel;
