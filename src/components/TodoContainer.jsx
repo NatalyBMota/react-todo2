@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import TodoList from './TodoList.jsx';
 import AddTodoForm from './AddTodoForm.jsx';
 import styles from './TodoContainer.module.css';
@@ -29,14 +30,15 @@ const TodoContainer = ({ tableName }) => {
       return sortedList;
     }
   }, []);
-
+  
   const fetchData = useCallback(async () => {
     const tableViewToGetQueryParam = "view=Grid%20view";
     const sortQueryParam = "sort%5B0%5D%5Bfield%5D=title";
     const sortAscending = "asc";
     const sortDirectionQueryParam = `sort%5B0%5D%5Bdirection%5D=${sortAscending}`;
+    const sortByProperty = `${sortQueryParam}&${sortDirectionQueryParam}`;
 
-    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${tableName}?${tableViewToGetQueryParam}&${sortQueryParam}&${sortDirectionQueryParam}`;
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${tableName}?${tableViewToGetQueryParam}&${sortByProperty}`;
     
     const options = {
       method: 'GET',
@@ -71,7 +73,7 @@ const TodoContainer = ({ tableName }) => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, [tableName, fetchData]);
 
   useEffect(() => {
     if (!isLoading) {
@@ -79,6 +81,64 @@ const TodoContainer = ({ tableName }) => {
     }
   }, [todoList, isLoading]);
 
+  const addTodo = async (newTodo) => {
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`;
+    
+    const options = {
+        method: 'POST',
+        headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+        },
+        body: JSON.stringify({"fields":
+        {
+            "title": newTodo.title,
+        }
+        })
+    };
+
+    const response = await fetch(url, options);
+    const json = await response.json();
+
+    let newList = [...todoList, {
+        id: json.id, 
+        title: json.fields.title,
+    }];
+    newList = titleSortOrder(newList, isAscOrder);
+    setTodoList(newList);
+  };
+
+  const removeTodo = async (id) => {
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}/${id}`;
+    
+    const options = {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+      },
+    };
+
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        let responseError = `${response.status}`;
+        throw new Error(responseError);
+      }
+
+      const json = await response.json();
+
+      if (json.deleted !== true) {
+        let deleteError = "Record not successfully deleted from table in AirTable account.";
+        throw new Error(deleteError);
+      }
+
+      const filteredTodoList = todoList.filter((item) => item.id !== id);
+      setTodoList(filteredTodoList);
+    } catch (error) {
+      return null;
+    }
+  };
 
   return (
     <>
@@ -90,8 +150,8 @@ const TodoContainer = ({ tableName }) => {
       <main>
         <section>
           <h1>{tableName} List</h1>
-          <AddTodoForm todoList={todoList} setTodoList={setTodoList} />
-          {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} setTodoList={setTodoList} />)}
+          <AddTodoForm onAddTodo={addTodo} />
+          {isLoading ? (<p>Loading...</p>) : (<TodoList todoList={todoList} removeTodo={removeTodo} />)}
         </section>
         <section>
           <img src={checkListImg} alt="Checklist." className={styles.checkListImg} />             
@@ -99,6 +159,10 @@ const TodoContainer = ({ tableName }) => {
       </main>
     </>
   );
+};
+
+TodoContainer.propTypes = {
+  tableName: PropTypes.string.isRequired
 };
 
 export default TodoContainer;
