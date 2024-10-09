@@ -5,9 +5,11 @@ import styles from './InputWithLabel.module.css';
 const InputWithLabel = ({children, todoTitle, handleTitleChange}) => {
     const inputRef = useRef();
 
-    useEffect(() => {
+    const focusInputRefWhenTodoSubmittedWithKeyboard = () => {
         inputRef.current.focus();
-    }, []);
+    }
+
+    useEffect(focusInputRefWhenTodoSubmittedWithKeyboard, []);
     
     return (
         <>
