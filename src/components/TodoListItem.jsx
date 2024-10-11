@@ -9,7 +9,10 @@ const TodoListItem = ({ id, todo, onRemoveTodo }) => {
             &nbsp;&nbsp;
             <button type="button" onClick={() => {
                 onRemoveTodo(id)
-            }} className={styles.removeButton}><img src={trashCan} alt="Remove item from to-do list." className={styles.trashCanIcon} />Remove</button>
+            }} className={styles.removeButton}>
+                <img src={trashCan} alt="Remove item from to-do list." className={styles.trashCanIcon} />
+                Remove
+            </button>
         </li>
     );
 }
