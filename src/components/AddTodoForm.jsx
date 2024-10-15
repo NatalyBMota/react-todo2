@@ -20,10 +20,13 @@ const AddTodoForm = ({ onAddTodo }) => {
 
     return (
         <form onSubmit={handleAddTodo} className={styles.addTodoForm}>
-            <InputWithLabel todoTitle={todoTitle} handleTitleChange={handleTitleChange}><span className={styles.labelForInput}>Title</span>
+            <InputWithLabel todoTitle={todoTitle} handleTitleChange={handleTitleChange}>
+                <span className={styles.labelForInput}>Title</span>
             </InputWithLabel>
             &nbsp;&nbsp;
-            <button type="submit" className={styles.addButton}><img src={addSign} alt="Add item to to-do list." className={styles.addButtonImg} /></button>
+            <button type="submit" className={styles.addButton}>
+                <img src={addSign} alt="Add item to to-do list." className={styles.addButtonImg} />
+            </button>
         </form>
     );
 };
