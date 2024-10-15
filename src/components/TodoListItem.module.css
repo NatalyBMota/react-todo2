@@ -29,7 +29,6 @@
 /* iPhone 11 Pro Max iOS 14.6 */
 @media only screen and (max-width: 415px) {
     .listItem {
-        font-size: .7em;
         padding: 0 1em;
     }
 }
@@ -41,10 +40,13 @@
     }
 }
 
-@media only screen and (min-width: 640px) and (max-width: 679px) {
+@media only screen and (max-width: 579px) {
     .todoListItem {
-        font-size: .8em;
+        font-size: .7em;
     }
+}
+
+@media only screen and (max-width: 679px) {
     .removeButton {
         font-size: .4em;
         padding: 0.7em 1.2em 0.5em 1.2em;
@@ -52,6 +54,12 @@
     .trashCanIcon {
         margin-bottom: .2em;
         margin-right: .8em;
+    }
+}
+
+@media only screen and (min-width: 580px) and (max-width: 679px) {
+    .todoListItem {
+        font-size: .8em;
     }
 }
 
