@@ -2,7 +2,7 @@
     width: 89%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .toggleSortOrderButton {
@@ -25,13 +25,6 @@
     }
 }
 
-/* @media only screen and (min-width: 580px) {
-    main {
-        background-color: #f0fff1;
-        border: 1px solid green;
-        border-radius: .5em;
-    }
-} */
 @media only screen and (min-width: 429px) and (max-width: 579px) {
     main {
         padding: .5em .6em .9em .4em;
@@ -124,6 +117,18 @@
     }
     main {
         padding: .5em 0 .3em 2em;
+    }
+}
+
+@media only screen and (min-width: 1145px) {
+    .asideWithToggleSortButton {
+        align-items: flex-end;
+    }
+}
+
+@media only screen and (min-width: 1145px) and (max-width: 1279px) {
+    .asideWithToggleSortButton {
+        margin-left: 1.6em;
     }
 }
 
