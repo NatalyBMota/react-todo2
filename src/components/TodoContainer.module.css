@@ -18,6 +18,21 @@
 }
 
 
+@media only screen and (min-width: 1027px) {
+    main {
+        background-color: #f0fff1;
+        padding: .5em 0 .3em 2em;
+        border: 1px solid green;
+        border-radius: .5em;
+    }
+}
+
+@media only screen and (min-width: 1027px) and (max-width: 1143px) {
+    main {
+        padding-right: 2em;
+    }
+}
+
 @media only screen and (min-width: 1145px) {
     .nameOfTableHeader {
         font-size: 1.5em;
@@ -30,22 +45,10 @@
         font-size: 1.1em;
         margin-bottom: 1.6em;
     }
-    main {
-        background-color: #f0fff1;
-        padding: .5em 0 .3em 2em;
-        border: 1px solid green;
-        border-radius: .5em;
-        /* margin-left: 10%;
-        margin-right: 10%; */
-    }
 }
 
 @media only screen and (min-width: 1280px) {
     main {
-        background-color: #f0fff1;
-        padding: .5em 0 .3em 2em;
-        border: 1px solid green;
-        border-radius: .5em;
         margin-left: 10%;
         margin-right: 10%;
     }
