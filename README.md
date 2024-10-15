@@ -17,7 +17,7 @@ VITE_AIRTABLE_BASE_ID=
 
 VITE_TABLE_NAME=
 
-- None of the variables in the .env.local file should end with a semicolens'.
+- None of the variables in the .env.local file should end with a semicolens.
 
 - An alternate to the following line of code:
   const newTodoTitle = todoInput.value;
