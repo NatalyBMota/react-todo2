@@ -22,8 +22,7 @@
     }
 }
 
-/* The iPhone 11 Pro Max iOS 14.6 in Portrait View is 415px wide. */
-@media only screen and (min-width: 362px) and (max-width: 415px) {
+@media only screen and (min-width: 362px) and (max-width: 388px) {
     .inputField {
         font-size: .4em;
         height: .8em;
@@ -32,8 +31,7 @@
     }
 }
 
-/* The iPhone 12/13 Pro Max iOS 14.6 Has a View Port Width of 428px in Portrait Mode */
-@media only screen and (min-width: 416px) and (max-width: 428px) {
+@media only screen and (min-width: 389px) and (max-width: 428px) {
     .inputField {
         font-size: .3em;
         height: .7em;

@@ -28,9 +28,22 @@ footer {
 }
 .footerLink {
     margin-top: 1em;
+    margin-bottom: 2.5em;
     max-width: 10em;
     border: none;
 }
+
+@media only screen and (max-width: 336px) {
+    .footerLink {
+        margin-bottom: 2.8em;
+    }
+}
+
+@media only screen and (min-width: 337px) and (max-width: 500px) {
+    .footerLink {
+        margin-bottom: 2.5em;
+    }
+} 
 
 /* iPhone 11 Pro Max iOS 14.6 */
 @media only screen and (max-width: 415px) {

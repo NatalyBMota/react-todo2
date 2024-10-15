@@ -79,7 +79,7 @@ button:focus-visible {
   }
 }
 
-@media only screen and (min-width: 429px) {
+@media only screen and (min-width: 389px) {
   body {
     /* background-color: #cad2c5; */
     background-image: radial-gradient(#f6fff8, #95d5b2 10%, #95d5b2 20%, #95d5b2 30%, #f6fff8);
