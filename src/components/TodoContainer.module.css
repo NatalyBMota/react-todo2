@@ -17,11 +17,24 @@
     }
 }
 
-@media only screen and (min-width: 580px) {
+@media only screen and (min-width: 420px) {
     main {
         background-color: #f0fff1;
         border: 1px solid green;
         border-radius: .5em;
+    }
+}
+
+/* @media only screen and (min-width: 580px) {
+    main {
+        background-color: #f0fff1;
+        border: 1px solid green;
+        border-radius: .5em;
+    }
+} */
+@media only screen and (min-width: 429px) and (max-width: 579px) {
+    main {
+        padding: .5em .6em .9em .4em;
     }
 }
 
