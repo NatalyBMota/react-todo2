@@ -50,3 +50,12 @@
         border-radius: .4em;
     }
 }
+
+@media only screen and (min-width: 580px) and (max-width: 599px) {
+    .inputField {
+        font-size: .4em;
+        height: .9em;
+        width: 10em;
+        border-radius: .4em;
+    }
+}

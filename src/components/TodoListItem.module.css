@@ -46,6 +46,12 @@
     }
 }
 
+@media only screen and (min-width: 580px) and (max-width: 599px) {
+    .todoListItem {
+        font-size: .5em;
+    }
+}
+
 @media only screen and (max-width: 679px) {
     .removeButton {
         font-size: .4em;

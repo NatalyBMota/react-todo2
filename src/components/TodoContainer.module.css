@@ -17,7 +17,7 @@
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 580px) {
     main {
         background-color: #f0fff1;
         border: 1px solid green;
@@ -25,17 +25,15 @@
     }
 }
 
-/* @media only screen and (min-width: 640px) {
+@media only screen and (min-width: 580px) and (max-width: 599px) {
     main {
-        background-color: #f0fff1;
-        border: 1px solid green;
-        border-radius: .5em;
+        padding: .5em .6em .9em .9em;
     }
-} */
+}
 
 @media only screen and (min-width: 600px) and (max-width: 639px) {
     main {
-        padding: .6em 1em .8em 1em;
+        padding: .6em 1em .9em .9em;
     }
 }
 

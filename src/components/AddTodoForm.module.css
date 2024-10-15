@@ -77,6 +77,18 @@
     }
 }
 
+@media only screen and (min-width: 580px) and (max-width: 599px) {
+    .labelForInput {
+        font-size: .7em;
+    }
+    .addButton {
+        padding: 0.3em .6em;
+    }
+    .addButtonImg {
+        width: 1em;
+    }
+}
+
 @media only screen and (min-width: 600px) and (max-width: 639px) {
     .labelForInput {
         font-size: .7em;
