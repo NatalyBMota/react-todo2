@@ -42,6 +42,9 @@
 }
 
 @media only screen and (min-width: 640px) and (max-width: 679px) {
+    .todoListItem {
+        font-size: .8em;
+    }
     .removeButton {
         font-size: .4em;
         padding: 0.7em 1.2em 0.5em 1.2em;

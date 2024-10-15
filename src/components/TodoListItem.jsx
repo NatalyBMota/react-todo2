@@ -5,7 +5,7 @@ import trashCan from '../assets/trash-can.svg';
 const TodoListItem = ({ id, todo, onRemoveTodo }) => {
     return (
         <li key={id} className={styles.listItem}>
-            {todo}
+            <span className={styles.todoListItem}>{todo}</span>
             &nbsp;&nbsp;
             <button type="button" onClick={() => {
                 onRemoveTodo(id)
