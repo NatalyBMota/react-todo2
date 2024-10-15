@@ -92,3 +92,15 @@
         width: 1.2em;
     }
 }
+
+@media only screen and (min-width: 680px) and (max-width: 820px) {
+    .labelForInput {
+        font-size: .8em;
+    }
+    .addButton {
+        padding: 0.4em .7em;
+    }
+    .addButtonImg {
+        width: 1.2em;
+    }
+}
