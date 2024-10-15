@@ -18,18 +18,59 @@
 }
 
 
-@media only screen and (min-width: 1027px) {
+@media only screen and (min-width: 770px) {
     main {
         background-color: #f0fff1;
-        padding: .5em 0 .3em 2em;
         border: 1px solid green;
         border-radius: .5em;
     }
 }
 
-@media only screen and (min-width: 1027px) and (max-width: 1143px) {
+@media only screen and (min-width: 770px) and (max-width: 799px) {
     main {
-        padding-right: 2em;
+        padding: .5em 1em .6em 1em;
+    }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 829px) {
+    main {
+        padding: .5em 1.1em .7em 1.1em;
+    }
+}
+
+@media only screen and (min-width: 830px) and (max-width: 899px) {
+    main {
+        padding: .5em 1.2em .8em 1.2em;
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 929px) {
+    main {
+        padding: .5em 1.3em .8em 1.3em;
+    }
+}
+
+@media only screen and (min-width: 930px) and (max-width: 959px) {
+    main {
+        padding: .6em 1.4em .9em 1.4em;
+    }
+}
+
+@media only screen and (min-width: 960px) and (max-width: 989px) {
+    main {
+        padding: .7em 1.6em .9em 1.6em;
+    }
+}
+
+@media only screen and (min-width: 990px) and (max-width: 1026px) {
+    main {
+        padding: .7em 1.8em .9em 1.8em;
+    }
+}
+
+@media only screen and (min-width: 1027px) and (max-width: 1144px) {
+    main {
+        padding: .7em 2em 1em 2em;
     }
 }
 
@@ -44,6 +85,9 @@
     nav {
         font-size: 1.1em;
         margin-bottom: 1.6em;
+    }
+    main {
+        padding: .5em 0 .3em 2em;
     }
 }
 
