@@ -81,6 +81,10 @@
     .labelForInput {
         font-size: .7em;
     }
+    
+}
+
+@media only screen and (min-width: 600px) and (max-width: 679px) {
     .addButton {
         padding: 0.2rem .4rem;
     }
@@ -92,12 +96,6 @@
 @media only screen and (min-width: 640px) and (max-width: 679px) {
     .labelForInput {
         font-size: .7em;
-    }
-    .addButton {
-        padding: 0.4em .7em;
-    }
-    .addButtonImg {
-        width: 1.2em;
     }
 }
 
